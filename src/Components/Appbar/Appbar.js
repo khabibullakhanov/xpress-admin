@@ -9,6 +9,7 @@ import logo from "../../Assets/Icons/LOGO.svg";
 import signout from "../../Assets/Icons/log-out-Light.svg";
 import usersLogo from "../../Assets/Icons/users-Light.svg"
 import reportsLogo from "../../Assets/Icons/user-Light.svg"
+import profileImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg"
 
 export function Appbar() {
   return (
@@ -17,13 +18,25 @@ export function Appbar() {
         <NavLink to="/">
           <img src={logo} alt="" />
         </NavLink>
+
+        <div id="appbar-profile-content">
+          <figure id="links-container-profile-image">
+            <img src={profileImg} alt="" />
+          </figure>
+          <h3>Muhammadxon</h3>
+          <p>Main Admin</p>
+        </div>
         <div id="links_container">
-          {navbarData.map((item) => {
+          {navbarData.map((item, index) => {
             return (
-              <NavLink to={item.link}>
-                <img src={item.icon} alt="" />
-                {item.name}
-              </NavLink>
+              // <div key={index}>
+                <NavLink activeClassName="active-nav" to={item.link} id="links_container-nav-link">
+                  <img src={item.icon} alt="" />
+                  {item.name}
+                </NavLink>
+              // </div>
+
+
             );
           })}
         </div>
@@ -37,6 +50,8 @@ export function Appbar() {
 }
 
 const navbarData = [
+  // {
+  // },
   {
     id: 1,
     link: "/product",

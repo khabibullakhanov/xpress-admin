@@ -17,14 +17,16 @@
 #header_right {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 100%;
 }
 
 #header_right_user {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: flex-start;
+  /* gap: 15px; */
 }
 
 #header_right_user>figure {
@@ -45,4 +47,22 @@
   position: relative;
   top: -3px;
   /* left: -5px; */
+}
+
+#header-right-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 25%;
+}
+
+#header-right-form>input {
+  border: none;
+  outline: none;
+  color: #C4C4C4;
+  font-size: 18px;
+  width: 95%;
 }

@@ -1,18 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Api } from "../../Components/Api/Api";
 import "./Product.css";
 export function Product() {
 
   const [openModal, setOpenModal] = useState(false)
   const [imgData, setImgDta] = useState([])
 
-  window.addEventListener("click", (e) => {
-    if (e.target.name === "product-body") {
-      setOpenModal(false)
-    }
-  })
+  // useEffect(() => {
+  //   window.addEventListener("click", (e) => {
+  //     if (e.target.className === "product-body") {
+  //       setOpenModal(false)
+  //     }
+  //   })
+  // })
 
   return (
     <div>
+      {/* <Api /> */}
       <button
         onClick={(e) => {
           setOpenModal(!false);
@@ -34,7 +38,7 @@ export function Product() {
             <p>Name</p>
             <input type="text" />
           </label>
-          <label> 
+          <label>
             <p>Price</p>
             <input type="text" />
           </label>
