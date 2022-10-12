@@ -1,7 +1,11 @@
 import React from 'react'
+import "./Users.css"
+import { UserTable } from '../../Components/UsersTable/UserTable'
 
 export function Users() {
     return (
-        <div>Users</div>
+        <div id='users-container'>
+            <UserTable/>
+        </div>
     )
 }

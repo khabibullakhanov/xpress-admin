@@ -157,3 +157,8 @@ aside {
   gap: 10px;
   color: black;
 }
+
+#my-logo {
+  color: black;
+  font-family: 'Courier New', Courier, monospace;
+}

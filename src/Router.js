@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Appbar } from "./Components/Appbar/Appbar";
 import { Header } from "./Components/Header/Header";
+import { AddUser } from "./Pages/AddUser/AddUser";
 import { Advertisment } from "./Pages/Advertisment/Advertisment";
 import { Brands } from "./Pages/Brands/Brands";
 import { Order } from "./Pages/Order/Order";
@@ -23,6 +24,7 @@ export function Router() {
           <Route path="/order" element={<Order />} />
           <Route path="/users" element={<Users />} />
           <Route path="/reports" element={<Reports />} />
+          <Route path="/addUser" element={<AddUser />} />
         </Routes>
       </div>
     </div>
