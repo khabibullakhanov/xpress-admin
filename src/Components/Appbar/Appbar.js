@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Appbar.css";
 import { NavLink } from "react-router-dom";
 import order from "../../Assets/Icons/shopping-basket-Light.svg";
@@ -14,6 +14,11 @@ import myLogo from "../../Assets/Images/My Logo.png"
 import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
 
 export function Appbar() {
+
+  const [profileImage, setProfileImage] = useState({
+    prImg: {},
+  })
+
   return (
     <>
       <aside>
@@ -23,7 +28,14 @@ export function Appbar() {
 
         <div id="appbar-profile-content">
           <figure id="links-container-profile-image">
-            <img src={profileImg} alt="" />
+            <img src={profileImage.prImg.size ? URL.createObjectURL(profileImage.prImg) : profileImg} alt="" />
+            <label id="change-color">
+              <input type="file"
+                onChange={(e) => {
+                  setProfileImage({ ...profileImage, prImg: e.target.files[0] })
+                }}
+              />
+              Chnage Photo</label>
           </figure>
           <h3>Muhammadxon</h3>
           <p>Main Admin</p>

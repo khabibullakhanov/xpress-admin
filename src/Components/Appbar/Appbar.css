@@ -104,29 +104,74 @@ aside {
   justify-content: space-between;
   align-items: center;
   padding: 50px 0;
-  background: linear-gradient(
-    121.32deg,
-    #ffffff 10.96%,
-    #ffffff 72%,
-    #ffffff 99.98%
-    );
-    box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
+  background: linear-gradient(121.32deg,
+      #ffffff 10.96%,
+      #ffffff 72%,
+      #ffffff 99.98%);
+  box-shadow: 0px 24px 32px rgba(0, 0, 0, 0.04),
     0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
     0px 0px 1px rgba(0, 0, 0, 0.04);
-  }
-  #links-container-profile-image>img {
-    border-radius: 50%;
-    width: 180px;
-    height: 180px;
-  }
-  
-  #appbar-profile-content {
-    display: flex;
-    gap: 1rem;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+}
+
+#links-container-profile-image>img {
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+}
+
+#links-container-profile-image {
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  width: 180px;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.6s ease-in-out;
+}
+
+#links-container-profile-image:hover #change-color {
+  position: relative;
+  bottom: 82px;
+  width: 98%;
+  padding: 31px 0;
+  border-bottom-left-radius: 150px;
+  border-bottom-right-radius: 150px;
+  color: black;
+  font-weight: 600;
+  transition: 0.6s ease-in-out;
+  background-color: rgba(120, 120, 120, 0.512);
+}
+
+#change-color {
+  width: 98%;
+  padding: 31px 0;
+  position: relative;
+  bottom: -50px;
+  text-align: center ;
+  transition:0.6s ease-in-out;
+  font-weight: 600;
+}
+
+#change-color > input {
+  display: none;
+}
+
+#appbar-profile-content {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 350px; */
+  overflow-y: hidden;
+  height: 290px;
+  transition: 0.4s ease-in-out;
+}
+
+
+#appbar-profile-content-img-change>label>input {
+  display: none;
+}
 
 #links_container {
   display: flex;
@@ -135,7 +180,7 @@ aside {
   margin-top: -10px;
 }
 
-#links_container > a {
+#links_container>a {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -144,7 +189,7 @@ aside {
   transition: 0.3s ease-in-out;
 }
 
-#links_container > a.active {
+#links_container>a.active {
   color: black;
   transition: 0.3s ease-in-out;
   background: #FEAF00;

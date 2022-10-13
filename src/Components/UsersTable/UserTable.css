@@ -60,17 +60,22 @@
 
 #user-table-thead>tr {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+    gap: 7rem;
+    padding-left: 20%;
     color: #ACACAC;
 }
 
 #user-table-thead {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-right: 20%;
     padding-block: 20px;
-    position: sticky;
-    top: 0;
+    /* position: sticky;
+    top: 0; */
     background-color: #F8F8F8;
 }
 
@@ -105,3 +110,9 @@
     background: linear-gradient(transparent,#ffce65);
     border-radius: 6px;
 }   
+
+#user-table-tbody-my-img > img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+}

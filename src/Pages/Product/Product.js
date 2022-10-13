@@ -1,22 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Api } from "../../Components/Api/Api";
+import React, { useState } from "react";
 import "./Product.css";
 export function Product() {
 
   const [openModal, setOpenModal] = useState(false)
-  const [imgData, setImgDta] = useState([])
+  const [imgData, setImgData] = useState([])
 
-  // useEffect(() => {
-  //   window.addEventListener("click", (e) => {
-  //     if (e.target.className === "product-body") {
-  //       setOpenModal(false)
-  //     }
-  //   })
-  // })
 
   return (
     <div>
-      {/* <Api /> */}
       <button
         onClick={(e) => {
           setOpenModal(!false);
@@ -57,7 +48,7 @@ export function Product() {
               accept="image/png, image/jpeg, image/jpg"
               multiple="multiple"
               onChange={(e) => {
-                setImgDta([...imgData, ...e.target.files]);
+                setImgData([...imgData, ...e.target.files]);
               }}
             />
           </label>

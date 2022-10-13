@@ -1,0 +1,137 @@
+#advertise-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+#advertise-first-card {
+    background-color: #F0F9FF;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    border-radius: 10px;
+    width: 280px;
+    padding: 0 30px;
+    justify-content: space-between;
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-first-card:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-first-card> :first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    top: -30px;
+}
+
+#advertise-first-card> :nth-child(2) {
+    position: relative;
+    bottom: -50px;
+
+}
+
+#advertise-second-card {
+    background-color: #FEF6FB;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    border-radius: 10px;
+    width: 280px;
+    padding: 0 30px;
+    justify-content: space-between;
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-second-card:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-second-card>:first-child {
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+#advertise-second-card>:nth-child(2) {
+    position: relative;
+    bottom: -50px;
+}
+
+#advertise-third-card {
+    background-color: #FEFBEC;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    border-radius: 10px;
+    width: 280px;
+    padding: 0 30px;
+    justify-content: space-between;
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-third-card:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-third-card>:first-child {
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+}
+
+#advertise-third-card>:nth-child(2) {
+    position: relative;
+    bottom: -50px;
+}
+
+#advertise-fourth-card {
+    background-color: #FCBC18;
+    display: flex;
+    align-items: center;
+    height: 180px;
+    border-radius: 10px;
+    width: 280px;
+    padding: 0 30px;
+    justify-content: space-between;
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-fourth-card:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
+
+#advertise-fourth-card>:first-child {
+    position: relative;
+    top: -30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+#advertise-fourth-card> :nth-child(2) {
+    position: relative;
+    bottom: -50px;
+}
+
+#advertise-first-card:hover {
+    transform: scale(1.1);
+    transition: 0.4s ease-in-out;
+}
