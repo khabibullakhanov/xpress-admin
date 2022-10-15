@@ -1,37 +1,140 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "./AddUserCard.css"
 import { useNavigate } from 'react-router-dom'
 import { useSnackbar } from 'notistack'
+import { useDispatch, useSelector } from 'react-redux'
+import { acUserAddCrud, acUserDeleteCrud, acUserUpdateCrud } from '../../Redux/Crud'
+import { acLoading } from '../../Redux/Loading'
 
 export function AddUserCrud() {
+    const dispatch = useDispatch();
+    const userDatas = useSelector((state) => state.crud);
     const { enqueueSnackbar } = useSnackbar()
     const [images, setImages] = useState([])
+    const [value, setValue] = useState([])
+    const [typeHendelSubmit, setTypeHendelSubmit] = useState("Add");
+
+    useEffect(() => {
+        localStorage.setItem("userDatas", JSON.stringify(userDatas) || "[]")
+    }, [userDatas]);
+
 
     const submitUserData = (e) => {
+        alert(userDatas)
+        console.log(value);
         e.preventDefault()
-        enqueueSnackbar(`Successfully saved`, {
-            autoHideDuration: "2000",
-            variant: "success",
-        });
+        setTimeout(() => {
+            dispatch(acLoading(true));
+        }, "1")
+        setTimeout(() => {
+            dispatch(acLoading(false));
+        }, "1500")
+        if (typeHendelSubmit === "Add") {
+            const NowDate = new Date().getTime()
+            const newUser = {
+                id: NowDate,
+                userIsm: e.target.name.value,
+                userEmayl: e.target.email.value,
+                userRaqam: e.target.number.value,
+                userManzil: e.target.address.value,
+                userNarx: e.target.cost.value,
+                userRasm: e.target.images.files,
+            }
+
+            dispatch(acUserAddCrud(newUser))
+            enqueueSnackbar(`${value.userName} successfully saved`, {
+                autoHideDuration: "2000",
+                variant: "success",
+            });
+        }
+        // } else {
+        //     dispatch(acUserUpdateCrud(value))
+        //     setTypeHendelSubmit("Add User")
+        //     setTimeout(() => {
+        //         dispatch(acLoading(true));
+        //     }, "1")
+        //     setTimeout(() => {
+        //         dispatch(acLoading(false));
+        //     }, "1500")
+        //     enqueueSnackbar(`${value.userName} successfully edited`, {
+        //         autoHideDuration: "2000",
+        //         variant: "success",
+        //     });
+        // }
     }
+
+
 
     return (
         <>
+
             <form id='add-crud-form' onSubmit={submitUserData}>
                 <div id="ad-user-crud-container">
                     <div id="ad-user-crud-container-left">
-                        <input type="text" placeholder='Type name...' />
-                        <input type="number" placeholder='Type numer...' />
-                        <input type="email" placeholder='type email...' />
+                        <input
+
+                            onChange={(e) => {
+                                setValue({ ...value, userName: e.target.value })
+                            }}
+                            // value={value.userName}
+                            name='name'
+                            type="text"
+                            placeholder='Type name...'
+                            required
+                        />
+                        <input
+
+                            onChange={(e) => {
+                                setValue({ ...value, userNumber: e.target.value })
+                            }}
+                            // value={value.userNumber}
+                            name='number'
+                            type="number"
+                            placeholder='Type numer...'
+                            required
+                        />
+                        <input
+
+                            onChange={(e) => {
+                                setValue({ ...value, userEmail: e.target.value })
+                            }}
+                            // value={value.userEmail}
+                            name='email'
+                            type="email"
+                            placeholder='type email...'
+                            required
+                        />
                     </div>
                     <div id="ad-user-crud-container-right">
-                        <input type="text" placeholder='Type address...' />
-                        <input type="text" placeholder='Type cost...' />
-                        <label style={images.length === 4 ? { display: "flex" } : {}}>
+                        <input
+
+                            onChange={(e) => {
+                                setValue({ ...value, userAddress: e.target.value })
+                            }}
+                            // value={value.userAddress}
+                            name='adress'
+                            type="text"
+                            placeholder='Type address...'
+                            required
+                        />
+                        <input
+
+                            onChange={(e) => {
+                                setValue({ ...value, userCost: e.target.value })
+                            }}
+                            // value={value.userCost}
+                            name='cost'
+                            type="text"
+                            placeholder='Type cost...'
+                            required
+                        />
+                        <label>
                             <input type="file"
+                                disabled name='images'
                                 accept='image/png, image/jpg image/jpeg'
                                 multiple="multiple"
                                 onChange={(e) => {
+                                    setValue({ ...value, userImages: e.target.files })
                                     const MyFiles = [...images]
                                     for (let i = 0; i < e.target.files.length; i++) {
                                         if (MyFiles.length > 4) {
@@ -53,7 +156,7 @@ export function AddUserCrud() {
                         return (
                             <>
                                 <figure id="upload-images-crud">
-                                    <button onClick={() => {
+                                    <button type='button' onClick={() => {
                                         setImages(images.filter((item, i) => i !== index))
                                     }}>X</button>
                                     <img src={URL.createObjectURL(item)} alt="" />
@@ -62,6 +165,13 @@ export function AddUserCrud() {
                             </>
                         )
                     })}
+                    {/* {
+                        userDatas.map((user) => {
+                            return (
+                                <p>{user.userName}</p>
+                            )
+                        })
+                    } */}
                     <label id="upload-images-crud-add-label" style={images.length === 5 ? { display: "none" } : { display: "flex" }}>
                         <input type="file"
                             accept='image/png, image/jpg image/jpeg'
@@ -82,7 +192,7 @@ export function AddUserCrud() {
                         +
                     </label>
                 </div>
-                <button id='ad-crud-btn'>Create User</button>
+                <button id='ad-crud-btn'>{typeHendelSubmit}</button>
             </form>
         </>
     )

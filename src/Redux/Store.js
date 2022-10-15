@@ -1,13 +1,21 @@
-import { createStore, combineReducers } from "redux";
-import { reSearch } from "./Search"
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import { reUserCrud } from "./Crud"
 import { reLoading } from "./Loading";
+import { reSearch } from "./Search";
 
 const reducer = combineReducers({
+  crud: reUserCrud,
   reSearch,
   reLoading,
+
 });
 
-export const Store = createStore(
+export const Store = configureStore({
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+  devTools: process.env.NODE_ENV !== "production",
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+      immutableCheck: false,
+    }),
+});

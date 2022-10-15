@@ -16,10 +16,6 @@
     transition: 0.4s ease-in-out;
 }
 
-#advertise-first-card:hover {
-    transform: scale(1.1);
-    transition: 0.4s ease-in-out;
-}
 
 #advertise-first-card> :first-child {
     display: flex;
@@ -48,10 +44,7 @@
     transition: 0.4s ease-in-out;
 }
 
-#advertise-second-card:hover {
-    transform: scale(1.1);
-    transition: 0.4s ease-in-out;
-}
+
 
 #advertise-second-card>:first-child {
     position: relative;
@@ -80,10 +73,6 @@
     transition: 0.4s ease-in-out;
 }
 
-#advertise-third-card:hover {
-    transform: scale(1.1);
-    transition: 0.4s ease-in-out;
-}
 
 #advertise-third-card>:first-child {
     position: relative;
@@ -112,10 +101,7 @@
     transition: 0.4s ease-in-out;
 }
 
-#advertise-fourth-card:hover {
-    transform: scale(1.1);
-    transition: 0.4s ease-in-out;
-}
+
 
 #advertise-fourth-card>:first-child {
     position: relative;
@@ -129,9 +115,4 @@
 #advertise-fourth-card> :nth-child(2) {
     position: relative;
     bottom: -50px;
-}
-
-#advertise-first-card:hover {
-    transform: scale(1.1);
-    transition: 0.4s ease-in-out;
 }
