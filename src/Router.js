@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { Test } from "./Test";
 import { Appbar } from "./Components/Appbar/Appbar";
 import { Header } from "./Components/Header/Header";
 import { AddUser } from "./Pages/AddUser/AddUser";
@@ -18,7 +19,7 @@ export function Router() {
       <div id="router_pages">
         <Header />
         <Routes>
-          <Route path="/product" element={<Product />} />
+          <Route path="/" element={<Product />} />
           <Route path="/ads" element={<Advertisment />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/order" element={<Order />} />

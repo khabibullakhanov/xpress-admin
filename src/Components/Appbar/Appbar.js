@@ -5,12 +5,10 @@ import order from "../../Assets/Icons/shopping-basket-Light.svg";
 import product from "../../Assets/Icons/package-Light.svg";
 import ads from "../../Assets/Icons/ads (2).svg";
 import brands from "../../Assets/Icons/star-Light.svg";
-import logo from "../../Assets/Icons/LOGO.svg";
 import signout from "../../Assets/Icons/log-out-Light.svg";
 import usersLogo from "../../Assets/Icons/users-Light.svg"
 import reportsLogo from "../../Assets/Icons/user-Light.svg"
 import profileImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg"
-import myLogo from "../../Assets/Images/My Logo.png"
 import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
 
 export function Appbar() {
@@ -18,6 +16,12 @@ export function Appbar() {
   const [profileImage, setProfileImage] = useState({
     prImg: {},
   })
+
+  const logOut = () => {
+    localStorage.removeItem("server")
+    localStorage.removeItem("auth")
+    window.location.reload()
+  }
 
   return (
     <>
@@ -54,7 +58,8 @@ export function Appbar() {
             );
           })}
         </div>
-        <NavLink to="/" id="signout">
+        <NavLink
+          onClick={logOut} id="signout">
           <img src={signout} alt="" />
           Sign out
         </NavLink>
@@ -68,7 +73,7 @@ const navbarData = [
   // },
   {
     id: 1,
-    link: "/product",
+    link: "/",
     name: "Product",
     icon: product,
   },

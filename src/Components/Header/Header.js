@@ -21,8 +21,13 @@ export function Header() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
 
+    }, []);
+    
+    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+  // const allData = data.concat(localUsers)
+  // console.log(localUsers);
   const searched =
     search ? data.filter((fil) =>
       fil.name.toLowerCase().includes(search) ||
@@ -48,22 +53,22 @@ export function Header() {
         </form>
         <img id="header-bell-icon" src={bellIcon} alt="" />
       </div>
-      <div style={search ? {display:"flex"} : {display:"none"}} id="header-right-bottom">
+      <div style={search ? { display: "flex" } : { display: "none" }} id="header-right-bottom">
         {
           search ? data.filter((fil) =>
-            fil.name.toLowerCase().includes(search) ||
-            fil.username.toLowerCase().includes(search)
+            fil.name.toLowerCase().includes(search)
+            // fil.username.toLowerCase().includes(search)
           ).map((item, index) => {
             return (
               <div>
                 <div id="header-right-bottom-item">
-                  <p>{index+1}</p>
-                  <Link 
-                  onClick={() => {
-                    setSearch(false)
-                    setSearch("")
-                  }}
-                  to={`/product/${item.id}`}>{item.name}</Link>
+                  <p>{index + 1}</p>
+                  <Link
+                    onClick={() => {
+                      setSearch(false)
+                      setSearch("")
+                    }}
+                    to={`/product/${item.id}`}>{item.name}</Link>
                 </div>
               </div>
             )

@@ -1,40 +1,37 @@
-const userDatas = JSON.parse(localStorage.getItem("userDatas") || "[]");
+const users = JSON.parse(localStorage.getItem("users") || "[]");
 
-export const reUserCrud = (state = userDatas, action) => {
-    switch (action.type) {
-        case "ADD_CRUD":
-            return [...state, action.payload];
+export const reCrud = (state = users, action) => {
+  switch (action.type) {
+    case "ADD_CRUD":
+      return [...state, action.payload];
 
-        case "DELETE_CRUD":
-            return state.filter((item) => item.id !== action.payload);
+    case "DELETE_CRUD":
+      return state.filter((item) => item.id !== action.payload);
 
+    case "UPDATE_CRUD":
+      return state.map((item) => {
+        if (item.id === action.payload.id) {
+          return { ...action.payload };
+        }
+        return item;
+      });
 
-        case "UPDATE_CRUD":
-            return state.map((item) => {
-                if (item.id === action.payload.id) {
-                    return { ...action.payload };
-                }
-                return item;
-            });
-
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 };
 
-
-
-export const acUserAddCrud = (payload) => ({
-    type: "ADD_CRUD",
-    payload,
+export const acAddCrud = (payload) => ({
+  type: "ADD_CRUD",
+  payload,
 });
 
-export const acUserDeleteCrud = (id) => ({
-    type: "DELETE_CRUD",
-    payload: id,
+export const acDeleteCrud = (id) => ({
+  type: "DELETE_CRUD",
+  payload: id,
 });
 
-export const acUserUpdateCrud = (payload) => ({
-    type: "UPDATE_CRUD",
-    payload,
+export const acUpdateCrud = (payload) => ({
+  type: "UPDATE_CRUD",
+  payload,
 });

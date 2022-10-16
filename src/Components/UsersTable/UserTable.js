@@ -23,7 +23,10 @@ export function UserTable() {
             .catch((err) => {
                 console.log(err);
             });
-    }, []);
+        }, []);
+        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const allData = localUsers.concat(data)
 
     return (
         <div id='user-table-container'>
@@ -31,7 +34,7 @@ export function UserTable() {
                 <h2>Users List</h2>
                 <div>
                     <button onClick={() => {
-                        setOpenModal(true)
+                        navigate("/addUser")
                     }}>Add New User</button>
                 </div>
             </div>
@@ -40,13 +43,13 @@ export function UserTable() {
                     <thead id='user-table-thead'>
                         <tr>
                             <th>Name</th>
-                            <th>UserName</th>
                             <th>Email</th>
-                            <th>Phone</th>
+                            <th>Addres</th>
                             <th>ZipCode</th>
+                            <th></th>
                         </tr>
                     </thead>
-                    {data.map((item, index) => {
+                    {allData.map((item, index) => {
                         setTimeout(() => {
                             dispatch(acLoading(false))
                         }, 700)
@@ -55,9 +58,9 @@ export function UserTable() {
                                 <tr>
                                     <td id='user-table-tbody-my-img'><img src={myImg} alt="" /></td>
                                     <td>{item.name}</td>
-                                    <td>{item.username}</td>
                                     <td>{item.email}</td>
-                                    <td>{item.phone}</td>
+                                    <td>{item.address.city}</td>
+                                    <td>{item.address.zipcode}</td>
                                     {/* <td>{item.zipcode}</td> */}
                                     <div id="user-table-tbody-btns">
                                         <button onClick={() => {

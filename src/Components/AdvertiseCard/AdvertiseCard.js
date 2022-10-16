@@ -15,34 +15,34 @@ export function AdvertiseCard() {
                     <p>Students</p>
                 </div>
                 <div id="advertise-first-card-right">
-                    <h2>234</h2>
+                    <h2>15</h2>
                 </div>
             </div>
             <div id="advertise-second-card">
                 <div>
                     <img src={saveIcon} alt="" />
-                    <p>Students</p>
+                    <p>Works</p>
                 </div>
                 <div>
-                    <h2>234</h2>
+                    <h2>04</h2>
                 </div>
             </div>
             <div id="advertise-third-card">
                 <div>
                     <img src={dollarIcon} alt="" />
-                    <p>Students</p>
+                    <p>Budget</p>
                 </div>
                 <div>
-                    <h2>234</h2>
+                    <h2>$ 100</h2>
                 </div>
             </div>
             <div id="advertise-fourth-card">
                 <div>
                     <img src={userIcon} alt="" />
-                    <p>Students</p>
+                    <p>Teachers</p>
                 </div>
                 <div>
-                    <h2>234</h2>
+                    <h2>2</h2>
                 </div>
             </div>
         </div>
