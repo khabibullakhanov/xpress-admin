@@ -7,6 +7,7 @@
     align-items: center;
     background-image: url("../../Assets/Images/login-background.jpg");
     background-repeat: no-repeat;
+    object-fit: cover;
     background-size: cover;
 }
 
@@ -61,7 +62,6 @@
 .remember {
     display: flex;
     align-items: center;
-    /* gap: 1rem; */
     justify-content: space-between;
     margin: 20px auto;
     width: 90%;

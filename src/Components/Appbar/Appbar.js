@@ -48,7 +48,7 @@ export function Appbar() {
           {navbarData.map((item, index) => {
             return (
               // <div key={index}>
-              <NavLink activeclassname="active-nav" to={item.link} id="links_container-nav-link">
+              <NavLink activeclassname="active-nav" key={index} to={item.link} id="links_container-nav-link">
                 <img src={item.icon} alt="" />
                 {item.name}
               </NavLink>
@@ -73,7 +73,7 @@ const navbarData = [
   // },
   {
     id: 1,
-    link: "/",
+    link: "/product",
     name: "Product",
     icon: product,
   },

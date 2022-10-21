@@ -37,7 +37,7 @@ export function AddUserCrud() {
                 phone: value.userNumber,
                 address: value.userAddress,
                 zipcode: value.userCost,
-                // userRasm: e.target.images.files,
+                userRasm: value.userImages,
             }
 
             dispatch(acAddCrud(newUser))
@@ -132,8 +132,9 @@ export function AddUserCrud() {
                                 disabled name='images'
                                 accept='image/png, image/jpg image/jpeg'
                                 multiple="multiple"
+                                value={value.userImages}
                                 onChange={(e) => {
-                                    // setValue({ ...value, userImages: e.target.files })
+                                    setValue({ ...value, userImages: e.target.files })
                                     const MyFiles = [...images]
                                     for (let i = 0; i < e.target.files.length; i++) {
                                         if (MyFiles.length > 4) {

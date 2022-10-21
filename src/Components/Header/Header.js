@@ -14,7 +14,7 @@ export function Header() {
   const dispatch = useDispatch();
   const searchData = useSelector((state) => state.reSearch)
   useEffect(() => {
-    axios("https://jsonplaceholder.typicode.com/users",)
+    axios("https://xpress.pandashop.uz/api/product",)
       .then((res) => {
         setData(res.data);
       })
@@ -22,21 +22,12 @@ export function Header() {
         console.log(err);
       });
 
-    }, []);
-    
-    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  }, []);
+
+  const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
   // const allData = data.concat(localUsers)
   // console.log(localUsers);
-  const searched =
-    search ? data.filter((fil) =>
-      fil.name.toLowerCase().includes(search) ||
-      fil.username.toLowerCase().includes(search)
-    ).map((item) => {
-      return (
-        <p>{item.name}</p>
-      )
-    }) : ""
 
   return (
     <div id="header">
@@ -56,8 +47,7 @@ export function Header() {
       <div style={search ? { display: "flex" } : { display: "none" }} id="header-right-bottom">
         {
           search ? data.filter((fil) =>
-            fil.name.toLowerCase().includes(search)
-            // fil.username.toLowerCase().includes(search)
+          fil.name.toLowerCase().includes(search) 
           ).map((item, index) => {
             return (
               <div>

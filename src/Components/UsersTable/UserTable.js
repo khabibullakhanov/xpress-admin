@@ -23,8 +23,8 @@ export function UserTable() {
             .catch((err) => {
                 console.log(err);
             });
-        }, []);
-        const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    }, []);
+    const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
     const allData = localUsers.concat(data)
 

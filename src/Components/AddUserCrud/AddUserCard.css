@@ -117,3 +117,41 @@
     border-radius: 8px;
     font-size: 22px;
 }   
+
+@media only screen and (max-width: 900px) {
+    #ad-user-crud-container {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    #ad-user-crud-container-left {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    #ad-user-crud-container-right {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    #ad-user-crud-container-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* width: 90%; */
+        text-align: center;
+    }
+    #ad-user-crud-container-right >label {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* #upload-images-container {
+        display: flex;
+        justify-content: center;
+    } */
+
+}

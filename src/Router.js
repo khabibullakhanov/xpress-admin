@@ -10,6 +10,8 @@ import { Order } from "./Pages/Order/Order";
 import { Product } from "./Pages/Product/Product";
 import { Reports } from "./Pages/Reports/Reports";
 import { Users } from "./Pages/Users/Users";
+import { NotFounded } from "./Pages/NotFounded/NotFounded";
+import { ProductView } from "./Components/ProductView/ProductView";
 
 
 export function Router() {
@@ -19,13 +21,15 @@ export function Router() {
       <div id="router_pages">
         <Header />
         <Routes>
-          <Route path="/" element={<Product />} />
+          <Route path="/product" element={<Product />} />
           <Route path="/ads" element={<Advertisment />} />
           <Route path="/brands" element={<Brands />} />
           <Route path="/order" element={<Order />} />
           <Route path="/users" element={<Users />} />
           <Route path="/reports" element={<Reports />} />
           <Route path="/addUser" element={<AddUser />} />
+          <Route path="*" element={<NotFounded />} />
+          <Route path="/product/:id" element={<ProductView/>} />
         </Routes>
       </div>
     </div>

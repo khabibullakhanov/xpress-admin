@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { AllProducts } from "../../Components/AllProducts/AllProducts";
+import { ProductView } from "../../Components/ProductView/ProductView";
 import "./Product.css";
 export function Product() {
 
@@ -8,12 +10,13 @@ export function Product() {
 
   return (
     <div>
+      <h1>ads</h1>
       <button
         onClick={(e) => {
           setOpenModal(!false);
 
         }}
-      >Open Modal</button>
+      >Open Modaljj</button>
       <div className={openModal ? "product-inside open" : "product-inside"}>
         <form className="product_form">
           <button
@@ -62,6 +65,7 @@ export function Product() {
           </button>
         </form>
       </div>
+      <AllProducts />
     </div>
   )
 

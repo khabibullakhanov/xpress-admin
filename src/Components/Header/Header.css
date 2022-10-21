@@ -18,7 +18,7 @@
   position: relative;
   right: 50px;
   gap: 1rem;
-  top: -21px;
+  top: -21px; 
   background-color: rgba(246, 246, 246, 0.607);
   padding: 25px 35px;
   border-bottom-left-radius: 8px;
@@ -94,9 +94,7 @@
   width: 95%;
 }
 
-#header-bell-icon {
-  
-}
+#header-bell-icon {}
 
 #header-bell-icon:hover {
   transition: 0.2s ease-in-out;
@@ -107,25 +105,26 @@
   -webkit-animation-timing-function: ease-in-out;
 }
 
-@keyframes animate {
+@media only screen and (max-width: 960px) {
+  #header-right-form  {
+    width: 100%;
+  }
+}
 
-  /* 0%,
-  100% {
-    transform: rotate(25deg);
-  } */
+@keyframes animate {
 
   10%,
   90% {
     transform: rotate(-25deg);
     transition: 0.1s ease-in-out;
   }
-  
+
   40%,
   90% {
     transform: rotate(25deg);
     transition: 0.1s ease-in-out;
   }
-  
+
   50% {
     transition: 0.1s ease-in-out;
     transform: rotate(-25deg);
