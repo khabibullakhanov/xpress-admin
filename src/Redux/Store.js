@@ -2,12 +2,13 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { reCrud } from "./Crud"
 import { reLoading } from "./Loading";
 import { reSearch } from "./Search";
+import { reAdmin } from "./Admin";
 
 const reducer = combineReducers({
   crud: reCrud,
   reSearch,
   reLoading,
-
+  admin: reAdmin,
 });
 
 export const Store = configureStore({
