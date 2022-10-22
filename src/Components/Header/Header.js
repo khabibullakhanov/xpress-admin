@@ -12,7 +12,6 @@ export function Header() {
   const [data, setData] = useState()
   const [search, setSearch] = useState()
   const dispatch = useDispatch();
-  const searchData = useSelector((state) => state.reSearch)
   useEffect(() => {
     axios("https://xpress.pandashop.uz/api/product",)
       .then((res) => {
@@ -24,7 +23,6 @@ export function Header() {
 
   }, []);
 
-  const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
   // const allData = data.concat(localUsers)
   // console.log(localUsers);
@@ -47,7 +45,9 @@ export function Header() {
       <div style={search ? { display: "flex" } : { display: "none" }} id="header-right-bottom">
         {
           search ? data.filter((fil) =>
-          fil.name.toLowerCase().includes(search) 
+            fil.name.toLowerCase().includes(search) ||
+            fil.about.toLowerCase().includes(search) ||
+            fil.id.includes(search)
           ).map((item, index) => {
             return (
               <div>

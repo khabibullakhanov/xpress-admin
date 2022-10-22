@@ -19,19 +19,17 @@ export function ProductView() {
   useEffect(() => {
     dispatch(acLoading(true))
     axios(`${api}/product/${id}`)
-    .then((res) => {
+      .then((res) => {
         setProduct(res.data);
-        console.log(res.data);
         setImages(JSON.parse(res.data.img) || "[]");
         dispatch(acLoading(false))
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         dispatch(acLoading(false))
       });
   }, [id, api, dispatch]);
 
-  console.log(images);
 
   // useEffect(() => {
   //     // dispatch(acLoading(true));
@@ -65,7 +63,7 @@ export function ProductView() {
               return (
                 <figure
                   onClick={() => {
-                    setView(index );
+                    setView(index);
                   }}
                   key={index}
                 >
@@ -80,7 +78,9 @@ export function ProductView() {
             })}
           </div>
         </div>
-        <div id="Right"></div>
+        <div id="Right">
+          <h2>Delete</h2>
+        </div>
       </div>
     </>
   );

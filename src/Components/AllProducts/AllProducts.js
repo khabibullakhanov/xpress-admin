@@ -36,6 +36,8 @@ export function AllProducts() {
             });
     }, []);
 
+
+
     return (
         <>
             <div id="all-products-content">
@@ -58,6 +60,7 @@ export function AllProducts() {
                                     <p>
                                         <span>{item.name}</span>
                                         <span>{item.price}</span>
+                                        <p>Delete Item</p>
                                     </p>
 
                                 </div>
