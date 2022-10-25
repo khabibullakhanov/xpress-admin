@@ -3,12 +3,16 @@ import { reCrud } from "./Crud"
 import { reLoading } from "./Loading";
 import { reSearch } from "./Search";
 import { reAdmin } from "./Admin";
+import { reProducts } from "./Product";
+import { reOrder } from "./Order";
 
 const reducer = combineReducers({
   crud: reCrud,
   reSearch,
   reLoading,
   admin: reAdmin,
+  products: reProducts,
+  orders: reOrder,
 });
 
 export const Store = configureStore({

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Test } from "./Test";
 import { Appbar } from "./Components/Appbar/Appbar";
@@ -12,15 +12,16 @@ import { Reports } from "./Pages/Reports/Reports";
 import { Users } from "./Pages/Users/Users";
 import { NotFounded } from "./Pages/NotFounded/NotFounded";
 import { ProductView } from "./Components/ProductView/ProductView";
-
+import { useSelector } from "react-redux";
 
 export function Router() {
   const [openAppbar, setOpenAppbar] = useState(false)
+  const products = useSelector((state) => state.products);
 
   return (
     <>
       <label id="open-menu-content">
-        <span style={openAppbar ? { display: "none" } : {position:"absolute", left:"30px", top:"50px"}} id="open-appbar" onClick={() => {
+        <span style={openAppbar ? { display: "none" } : { position: "absolute", left: "30px", top: "50px" }} id="open-appbar" onClick={() => {
           setOpenAppbar(true);
         }}><i className="fa-solid fa-bars"></i></span>
         <span
@@ -28,11 +29,12 @@ export function Router() {
             setOpenAppbar(false);
           }}
           style={openAppbar ? {
-            display: "block", fontSize: "25px", position:"relative", right:"100px", top:"30px"} : {}} id="close-appbar"><i className="fa-regular fa-rectangle-xmark"></i></span>
+            display: "block", fontSize: "25px", position: "relative", right: "100px", top: "30px"
+          } : {}} id="close-appbar"><i className="fa-regular fa-rectangle-xmark"></i></span>
       </label>
       <div id="router_container">
         <div style={openAppbar ? { width: "70%", } : {}}>
-          <Appbar openMenu={openAppbar} menuIcon={<i class="fa-solid fa-bars"></i>}/>
+          <Appbar openMenu={openAppbar} menuIcon={<i class="fa-solid fa-bars"></i>} />
         </div>
         <div id="router_pages">
           <Header />
@@ -45,7 +47,7 @@ export function Router() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/addUser" element={<AddUser />} />
             <Route path="*" element={<NotFounded />} />
-            <Route path="/product/:id" element={<ProductView />} />
+            <Route path="/product/:id" element={<ProductView products={products}/>} />
           </Routes>
         </div>
       </div>

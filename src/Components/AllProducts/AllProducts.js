@@ -25,10 +25,7 @@ export function AllProducts() {
         })
             .then((res) => {
                 setProduct(res.data);
-                setImages(JSON.parse(res.data.img) || "[]")
                 dispatch(acLoading(false));
-                console.log(JSON.parse(res.data.img))
-                console.log(images);
             })
             .catch((err) => {
                 console.log(err);
@@ -50,7 +47,7 @@ export function AllProducts() {
                                 <div
                                     style={item.img === [] ? {diplay:"none"}: {}}
                                     id="product-content-item"
-                                    key={index}
+                                    key={item.id}
                                     onClick={() => {
                                         navigate(`/product/${item.id}`);
                                     }}

@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { acLoading } from "../../Redux/Loading";
+
+
 export function Order() {
+
+  const dispatch = useDispatch()
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
+    dispatch(acLoading(true))
     axios("https://xpress.pandashop.uz/api/order")
       .then((res) => {
         setOrders(res.data);
         console.log(orders);
+        dispatch(acLoading(false))
       })
       .catch((err) => {
+        dispatch(acLoading(false))
         console.log(err.response.data);
       });
   }, []);
