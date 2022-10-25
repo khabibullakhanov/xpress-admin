@@ -43,6 +43,7 @@ export function AddUserCrud() {
     }
     formData.append("data", newproduct);
 
+    dispatch(acLoading(true));
     axios("https://xpress.pandashop.uz/api/product/add", {
       method: "POST",
       headers: {
@@ -52,7 +53,6 @@ export function AddUserCrud() {
       data: formData,
     })
       .then((res) => {
-        dispatch(acLoading(true));
         console.log(res.data);
         enqueueSnackbar("Product succesfully added", { variant: "success" });
         navigate("/product")
@@ -100,6 +100,30 @@ export function AddUserCrud() {
               placeholder="Cost"
               required
             />
+            <label
+              id="upload-images-crud-add-label"
+              style={imgData.length === 4 ? {  pointerEvents: "none" } : {}}
+            >
+              <input
+                type="file"
+                accept="image/png, image/jpeg, image/jpg"
+                multiple="multiple"
+                onChange={(e) => {
+                  setImages([...images, ...e.target.files]);
+                  const MyFiles = [...imgData];
+                  for (let i = 0; i < e.target.files.length; i++) {
+                    if (MyFiles.length < 4) {
+                      MyFiles.push(e.target.files[i]);
+                    } else {
+                      MyFiles.splice(0, 1);
+                      MyFiles.push(e.target.files[i]);
+                    }
+                  }
+                  setImgData(MyFiles);
+                }}
+              />
+              Choose Image
+            </label>
           </div>
           <div id="ad-user-crud-container-right">
             <input
@@ -126,32 +150,30 @@ export function AddUserCrud() {
               required
             />
 
-            <label>
-              <p>Choose season</p>
-              <select
-                value={product.season}
-                name="season"
-                onChange={inputChange}
-              >
-                <option value="qishgi">Qishgi</option>
-                <option value="bahorgi">Bahorgi</option>
-                <option value="yozgi">Yozgi</option>
-                <option value="kuzgi">Kuzgi</option>
-              </select>
-            </label>
-            <label>
-              <p>For Whom</p>
-              <select
-                value={product.forWhom}
-                name="forWhom"
-                onChange={inputChange}
-              >
-                <option value="ayollar">Ayollar</option>
-                <option value="erkaklar">Erkaklar</option>
-                <option value="yoshbolalar">Yosh Bolalar</option>
-                <option value="ssmirlar">Osmirlar</option>
-              </select>
-            </label>
+            {/* <p>Choose season</p> */}
+            <select
+            id="add-user-select-item"
+              value={product.season}
+              name="season"
+              onChange={inputChange}
+            >
+              <option value="qishgi">Qishgi</option>
+              <option value="bahorgi">Bahorgi</option>
+              <option value="yozgi">Yozgi</option>
+              <option value="kuzgi">Kuzgi</option>
+            </select>
+            {/* <p>For Whom</p> */}
+            <select
+            id="add-user-select-item"
+              value={product.forWhom}
+              name="forWhom"
+              onChange={inputChange}
+            >
+              <option value="ayollar">Ayollar</option>
+              <option value="erkaklar">Erkaklar</option>
+              <option value="yoshbolalar">Yosh Bolalar</option>
+              <option value="ssmirlar">Osmirlar</option>
+            </select>
           </div>
         </div>
         <div id="upload-images-container">
@@ -174,30 +196,7 @@ export function AddUserCrud() {
               </>
             );
           })}
-          <label
-            id="upload-images-crud-add-label"
-            style={imgData.length === 4 ? { display: "none" } : {}}
-          >
-            <input
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              multiple="multiple"
-              onChange={(e) => {
-                setImages([...images, ...e.target.files]);
-                const MyFiles = [...imgData];
-                for (let i = 0; i < e.target.files.length; i++) {
-                  if (MyFiles.length < 4) {
-                    MyFiles.push(e.target.files[i]);
-                  } else {
-                    MyFiles.splice(0, 1);
-                    MyFiles.push(e.target.files[i]);
-                  }
-                }
-                setImgData(MyFiles);
-              }}
-            />
-            +
-          </label>
+
         </div>
         <button id="ad-crud-btn">Add Product</button>
       </form>

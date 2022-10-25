@@ -1,8 +1,28 @@
 #advertise-container {
     display: flex;
     gap: 2rem;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    align-items: center;
     justify-content: center;
+    width: 100%;
+}
+
+#advertise-container-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
+}
+
+#advertise-container-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 2rem;
 }
 
 #advertise-first-card {
@@ -11,7 +31,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 280px;
+    width: 80%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -50,7 +70,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 280px;
+    width: 80%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -90,7 +110,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 280px;
+    width: 80%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -129,7 +149,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 280px;
+    width: 80%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -166,7 +186,52 @@
 @media only screen and (max-width: 900px) {
     #advertise-container {
         display: flex;
+        /* justify-content: center;
+        flex-wrap: wrap; */
+        align-items: center;
         justify-content: center;
-        flex-wrap: wrap;
+        flex-direction: column;
+        max-height: 700px;
+        padding-top: 25%;
+        min-width: 80%;
+        overflow: auto;
+    }
+
+    #advertise-container-left div {
+        width: 170%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 52%;
+    }
+
+    #advertise-container-right div {
+        width: 170%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 52%;
+    }
+
+}
+
+@media only screen and (max-width: 400px) {
+    #advertise-container-right div {
+        width: 170%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        height: 180px;
+    }
+
+    #advertise-container-left div {
+        width: 100%;
+        padding-block: -100px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        flex-direction: column;
+        height: 250px;
     }
 }

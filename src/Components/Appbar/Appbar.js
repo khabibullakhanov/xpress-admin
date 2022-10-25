@@ -11,12 +11,12 @@ import reportsLogo from "../../Assets/Icons/user-Light.svg"
 import profileImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg"
 import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
 
-export function Appbar() {
+export function Appbar({ openMenu, }) {
 
   const [profileImage, setProfileImage] = useState({
     prImg: {},
   })
-
+  const [openAppbar, setOpenAppbar] = useState(false)
   const logOut = () => {
     localStorage.removeItem("server")
     localStorage.removeItem("auth")
@@ -25,21 +25,17 @@ export function Appbar() {
 
   return (
     <>
-      <aside>
-        <NavLink to="/">
-          <h3 id="my-logo">Khabibullakhanov</h3>
-        </NavLink>
-
-        <div id="appbar-profile-content">
+      <aside style={openMenu ? { width: "90%" } : {}}>
+        <div style={openMenu ? { display: "flex", transition: "0.5s ease-in-out" } : {}} id="appbar-profile-content">
           <figure id="links-container-profile-image">
             <img src={profileImage.prImg.size ? URL.createObjectURL(profileImage.prImg) : profileImg} alt="" />
-            <label id="change-color">
+            {/* <label id="change-color">
               <input type="file"
                 onChange={(e) => {
                   setProfileImage({ ...profileImage, prImg: e.target.files[0] })
                 }}
               />
-              Chnage Photo</label>
+              Chnage Photo</label> */}
           </figure>
           <h3>Muhammadxon</h3>
           <p>Main Admin</p>
@@ -50,7 +46,7 @@ export function Appbar() {
               // <div key={index}>
               <NavLink activeclassname="active-nav" key={index} to={item.link} id="links_container-nav-link">
                 <img src={item.icon} alt="" />
-                {item.name}
+                <span style={openMenu ? { display: "block" } : {}}>{item.name}</span>
               </NavLink>
               // </div>
 
@@ -59,9 +55,12 @@ export function Appbar() {
           })}
         </div>
         <NavLink
+          style={openMenu ? { display: "flex", alignItems: "center", position: "relative", top: "20px" } : {}}
           onClick={logOut} id="signout">
           <img src={signout} alt="" />
-          Sign out
+          <span
+            style={openMenu ? { display: "block" } : {}}
+          >Sign out</span>
         </NavLink>
       </aside>
     </>

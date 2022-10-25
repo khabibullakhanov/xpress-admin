@@ -41,13 +41,14 @@ export function AllProducts() {
     return (
         <>
             <div id="all-products-content">
-                <div id="all-products-content-inside">
+                <div data-aos="fade-down" id="all-products-content-inside">
                     {product.map((item, index) => {
                         // const imagess = JSON.parse(item.img);
                         const imagess = JSON.parse(item.img || "[]")[0];
                         return (
                             <>
                                 <div
+                                    style={item.img === [] ? {diplay:"none"}: {}}
                                     id="product-content-item"
                                     key={index}
                                     onClick={() => {
@@ -60,8 +61,8 @@ export function AllProducts() {
                                     <p>
                                         <span>{item.name}</span>
                                         <span>{item.price}</span>
-                                        <p>Delete Item</p>
                                     </p>
+                                    <p>Delete Item</p>
 
                                 </div>
                             </>
@@ -69,6 +70,7 @@ export function AllProducts() {
                     })}
 
                 </div>
+                
             </div>
         </>
     )

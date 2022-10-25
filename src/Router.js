@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Route, Routes } from "react-router-dom";
 import { Test } from "./Test";
 import { Appbar } from "./Components/Appbar/Appbar";
@@ -15,23 +15,40 @@ import { ProductView } from "./Components/ProductView/ProductView";
 
 
 export function Router() {
+  const [openAppbar, setOpenAppbar] = useState(false)
+
   return (
-    <div id="router_container">
-      <Appbar />
-      <div id="router_pages">
-        <Header />
-        <Routes>
-          <Route path="/product" element={<Product />} />
-          <Route path="/ads" element={<Advertisment />} />
-          <Route path="/brands" element={<Brands />} />
-          <Route path="/order" element={<Order />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/addUser" element={<AddUser />} />
-          <Route path="*" element={<NotFounded />} />
-          <Route path="/product/:id" element={<ProductView/>} />
-        </Routes>
+    <>
+      <label id="open-menu-content">
+        <span style={openAppbar ? { display: "none" } : {position:"absolute", left:"30px", top:"50px"}} id="open-appbar" onClick={() => {
+          setOpenAppbar(true);
+        }}><i className="fa-solid fa-bars"></i></span>
+        <span
+          onClick={() => {
+            setOpenAppbar(false);
+          }}
+          style={openAppbar ? {
+            display: "block", fontSize: "25px", position:"relative", right:"100px", top:"30px"} : {}} id="close-appbar"><i className="fa-regular fa-rectangle-xmark"></i></span>
+      </label>
+      <div id="router_container">
+        <div style={openAppbar ? { width: "70%", } : {}}>
+          <Appbar openMenu={openAppbar} menuIcon={<i class="fa-solid fa-bars"></i>}/>
+        </div>
+        <div id="router_pages">
+          <Header />
+          <Routes>
+            <Route path="/product" element={<Product />} />
+            <Route path="/ads" element={<Advertisment />} />
+            <Route path="/brands" element={<Brands />} />
+            <Route path="/order" element={<Order />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/addUser" element={<AddUser />} />
+            <Route path="*" element={<NotFounded />} />
+            <Route path="/product/:id" element={<ProductView />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

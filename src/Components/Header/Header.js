@@ -10,6 +10,7 @@ const api = process.env.REACT_APP_API;
 export function Header() {
 
   const [data, setData] = useState()
+  const [newData, setNewData] = useState()
   const [search, setSearch] = useState()
   const dispatch = useDispatch();
   useEffect(() => {
@@ -23,9 +24,17 @@ export function Header() {
 
   }, []);
 
+  useEffect(() => {
+    axios("https://xpress.pandashop.uz/api/order",)
+      .then((res) => {
+        setNewData(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-  // const allData = data.concat(localUsers)
-  // console.log(localUsers);
+  }, []);
+
 
   return (
     <div id="header">
@@ -46,8 +55,7 @@ export function Header() {
         {
           search ? data.filter((fil) =>
             fil.name.toLowerCase().includes(search) ||
-            fil.about.toLowerCase().includes(search) ||
-            fil.id.includes(search)
+            fil.about.toLowerCase().includes(search)
           ).map((item, index) => {
             return (
               <div>
