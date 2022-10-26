@@ -59,6 +59,9 @@ export function AddUserCrud() {
         dispatch(acLoading(false));
       })
       .catch((err) => {
+        navigate("/product")
+        dispatch(acLoading(false));
+        enqueueSnackbar("Product not added", { variant: "error" });
         console.log(err.response.data.message);
       });
   }
@@ -102,7 +105,7 @@ export function AddUserCrud() {
             />
             <label
               id="upload-images-crud-add-label"
-              style={imgData.length === 4 ? {  pointerEvents: "none" } : {}}
+              style={imgData.length === 4 ? { pointerEvents: "none" } : {}}
             >
               <input
                 type="file"
@@ -152,7 +155,7 @@ export function AddUserCrud() {
 
             {/* <p>Choose season</p> */}
             <select
-            id="add-user-select-item"
+              id="add-user-select-item"
               value={product.season}
               name="season"
               onChange={inputChange}
@@ -164,7 +167,7 @@ export function AddUserCrud() {
             </select>
             {/* <p>For Whom</p> */}
             <select
-            id="add-user-select-item"
+              id="add-user-select-item"
               value={product.forWhom}
               name="forWhom"
               onChange={inputChange}
