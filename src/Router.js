@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Test } from "./Test";
 import { Appbar } from "./Components/Appbar/Appbar";
 import { Header } from "./Components/Header/Header";
 import { AddUser } from "./Pages/AddUser/AddUser";
@@ -48,6 +47,7 @@ export function Router() {
             <Route path="/addUser" element={<AddUser />} />
             <Route path="*" element={<NotFounded />} />
             <Route path="/product/:id" element={<ProductView products={products}/>} />
+            <Route path="/product/edite/:id" element={<AddUser/>} />
           </Routes>
         </div>
       </div>

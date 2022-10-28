@@ -1,14 +1,12 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { reCrud } from "./Crud"
 import { reLoading } from "./Loading";
-import { reSearch } from "./Search";
 import { reAdmin } from "./Admin";
-import { reProducts } from "./Product";
+import { reProducts } from "./Products";
 import { reOrder } from "./Order";
 
 const reducer = combineReducers({
   crud: reCrud,
-  reSearch,
   reLoading,
   admin: reAdmin,
   products: reProducts,

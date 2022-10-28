@@ -1,101 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { acAddCrud, acDeleteCrud, acUpdateCrud } from "./Redux/Crud";
-import { useSnackbar } from "notistack";
+var axios = require('axios');
+var FormData = require('form-data');
+var fs = require('fs');
+var data = new FormData();
+data.append('newDate', '{"name":"Test222","price":"12345","cost":"12345","season":"test","size":"XXL, XL","forWhom":"test","quantity":"12","discaunt":"0","about":"lorem ipsum"}');
+data.append('deleteImg', '["http://localhost:5000/xpress_01666894330500.jpg","http://localhost:5000/xpress_11666894330511.jpg"]');
+data.append('imgData', '["http://localhost:5000/xpress_01666894330500.jpg","http://localhost:5000/xpress_11666894330511.jpg"]');
+data.append('img', fs.createReadStream('/D:/Oybek Abdujabbborov/DCIM/8K FOTO/45945-tsvetyi_vesna_vetka.jpg'));
+data.append('img', fs.createReadStream('/D:/Oybek Abdujabbborov/DCIM/8K FOTO/47158-podsnezhniki_zima_sneg_gory_fon.jpg'));
+data.append('img', fs.createReadStream('/D:/Oybek Abdujabbborov/DCIM/8K FOTO/53128-cvetenie_vetka_belye_cvety.jpg'));
 
-export function Test() {
-  const dispatch = useDispatch();
-  const users = useSelector((state) => state.crud);
-  const { enqueueSnackbar } = useSnackbar();
-  const [typeHendelSubmit, setTypeHendelSubmit] = useState("Add");
-  const [value, setValue] = useState({ name: "" });
+var config = {
+  method: 'post',
+  url: 'http://localhost:5000/api/product/update/1',
+  headers: { 
+    'Content-Type': 'multipart/form-data', 
+    ...data.getHeaders()
+  },
+  data : data
+};
 
-  useEffect(() => {
-    localStorage.setItem("users", JSON.stringify(users));
-  }, [users]);
-
-  const hendelSubmit = (e) => {
-    e.preventDefault();
-    if (typeHendelSubmit === "Add") {
-      const nowDate = new Date().getTime();
-      const newUser = {
-        id: nowDate,
-        name: value.name,
-      };
-      dispatch(acAddCrud(newUser));
-      enqueueSnackbar(`Welcom ${value.name}`, { variant: "success" });
-    } else {
-      dispatch(acUpdateCrud(value));
-      setTypeHendelSubmit("Add");
-    }
-
-    setValue({ name: "" });
-  };
-
-  return (
-    <div >
-      <h1>
-        CRUD ReactJS + React + Material UI
-      </h1>
-
-      <div>
-        <form
-          onSubmit={hendelSubmit}>
-          <input
-            value={value.name}
-            onChange={(e) => {
-              setValue({ ...value, name: e.target.value });
-            }}
-          />
-          <button
-            type="submit">
-            {typeHendelSubmit}
-          </button>
-        </form>
-
-        {/* <Box
-          sx={{
-            width: "100%",
-            height: "calc(100% - 55px)",
-            overflowY: "auto",
-          }}
-        > */}
-        {users.map((user) => {
-          return (
-            <div
-              key={user.id}>
-              <h5>
-                {user.name}
-              </h5>
-
-
-
-              <div>
-                <div
-                  color="warning"
-                  onClick={() => {
-                    dispatch(acDeleteCrud(user.id));
-                    enqueueSnackbar(`${user.name} deleted`, {
-                      variant: "warning",
-                    });
-                  }}
-                >
-                  X
-                </div>
-                <div
-                  color="primary"
-                  onClick={() => {
-                    setTypeHendelSubmit("Edit");
-                    setValue(user);
-                  }}
-                >
-                  Edite
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});

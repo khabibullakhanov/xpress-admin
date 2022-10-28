@@ -5,7 +5,7 @@ import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { acLoading } from "../../Redux/Loading"
-
+import { NumericFormat } from "react-number-format";
 
 export function AddUserCrud() {
   const { enqueueSnackbar } = useSnackbar();
@@ -76,7 +76,7 @@ export function AddUserCrud() {
               value={product.name}
               name="name"
               type="text"
-              placeholder="Name"
+              placeholder="Write name..."
               required
             />
             <input
@@ -84,24 +84,34 @@ export function AddUserCrud() {
               value={product.about}
               name="about"
               type="text"
-              placeholder="About"
+              placeholder="Write about..."
               required
             />
-            <input
-              onChange={inputChange}
+            <NumericFormat
               value={product.price}
+              placeholder="Write price..."
+              format="+99 (8##) ### ####"
+              suffix="$"
+              thousandSeparator=","
+              allowemptyformatting="true"
               name="price"
-              type="number"
-              placeholder="Price"
-              required
+              onValueChange={(values) => {
+                const { value } = values;
+                setProduct({ ...product, price: value });
+              }}
             />
-            <input
-              type="number"
-              name="cost"
+            <NumericFormat
               value={product.cost}
-              onChange={inputChange}
-              placeholder="Cost"
-              required
+              placeholder="Write cost..."
+              format=""
+              suffix="$"
+              thousandSeparator=","
+              allowemptyformatting="true"
+              name="cost"
+              onValueChange={(values) => {
+                const { value } = values;
+                setProduct({ ...product, cost: value });
+              }}
             />
             <label
               id="upload-images-crud-add-label"
@@ -144,13 +154,16 @@ export function AddUserCrud() {
               onChange={inputChange}
               placeholder="Size"
             />
-            <input
-              onChange={inputChange}
+            <NumericFormat
               value={product.discaunt}
+              placeholder="Discount"
+              suffix="%"
+              allowemptyformatting="true"
               name="discaunt"
-              type="number"
-              placeholder="Discaunt"
-              required
+              onValueChange={(values) => {
+                const { value } = values;
+                setProduct({ ...product, discaunt: value });
+              }}
             />
 
             {/* <p>Choose season</p> */}
@@ -182,8 +195,8 @@ export function AddUserCrud() {
         <div id="upload-images-container">
           {imgData.map((item, index) => {
             return (
-              <>
-                <div key={index}>
+              <div key={index}>
+                <div>
                   <figure id="upload-images-crud">
                     <button
                       type="button"
@@ -196,7 +209,7 @@ export function AddUserCrud() {
                     <img src={URL.createObjectURL(item)} alt="" />
                   </figure>
                 </div>
-              </>
+              </div>
             );
           })}
 

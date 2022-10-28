@@ -19,6 +19,7 @@
   right: 50px;
   gap: 1rem;
   top: -21px; 
+  z-index: 9999;
   background-color: rgba(246, 246, 246, 0.607);
   padding: 25px 35px;
   border-bottom-left-radius: 8px;
@@ -115,7 +116,7 @@
 
   10%,
   90% {
-    transform: rotate(-25deg);
+    transform: rotate(-20deg);
     transition: 0.1s ease-in-out;
   }
 

@@ -4,9 +4,16 @@ import saveIcon from "../../Assets/Icons/Vector (28).svg"
 import dollarIcon from "../../Assets/Icons/Vector (29).svg"
 import userIcon from "../../Assets/Icons/Vector (30).svg"
 import "./AdvertiseCard.css"
+import { useSelector } from 'react-redux'
 
 
 export function AdvertiseCard() {
+
+    const products = useSelector((state) => state.products);
+    const order = useSelector((state) => state.orders);
+    console.log(products);
+
+    const s = [products].length
     return (
         <div id="advertise-container">
             <div id="advertise-container-left">
@@ -16,7 +23,7 @@ export function AdvertiseCard() {
                         <p>Students</p>
                     </div>
                     <div id="advertise-first-card-right">
-                        <h2>15</h2>
+                        <h2>{s}</h2>
                     </div>
                 </div>
                 <div id="advertise-second-card">
@@ -47,7 +54,7 @@ export function AdvertiseCard() {
                     <div>
                         <h2>2</h2>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     )

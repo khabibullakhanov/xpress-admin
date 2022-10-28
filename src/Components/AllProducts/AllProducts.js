@@ -43,11 +43,10 @@ export function AllProducts() {
                         // const imagess = JSON.parse(item.img);
                         const imagess = JSON.parse(item.img || "[]")[0];
                         return (
-                            <>
+                            <div key={item.id}>
                                 <div
                                     style={item.img === [] ? {diplay:"none"}: {}}
                                     id="product-content-item"
-                                    key={item.id}
                                     onClick={() => {
                                         navigate(`/product/${item.id}`);
                                     }}
@@ -56,13 +55,11 @@ export function AllProducts() {
                                         <img src={imagess} alt="" />
                                     </figure>
                                     <p>
+                                        <span>{index+1}.    </span>
                                         <span>{item.name}</span>
-                                        <span>{item.price}</span>
                                     </p>
-                                    <p>Delete Item</p>
-
                                 </div>
-                            </>
+                            </div>
                         );
                     })}
 
