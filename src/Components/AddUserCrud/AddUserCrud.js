@@ -90,8 +90,9 @@ export function AddUserCrud() {
             <NumericFormat
               value={product.price}
               placeholder="Write price..."
-              format="+99 (8##) ### ####"
+              // format="+99 (8##) ### ####"
               suffix="$"
+              maxLength="3"
               thousandSeparator=","
               allowemptyformatting="true"
               name="price"

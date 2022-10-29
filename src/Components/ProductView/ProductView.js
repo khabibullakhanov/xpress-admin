@@ -4,10 +4,14 @@ import "./ProductView.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { acLoading } from "../../Redux/Loading";
-
+import { IconButton } from '@mui/material';
 import axios from "axios";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { useSnackbar } from "notistack";
 
 export function ProductView() {
+  const enqueueSnackbar = useSnackbar()
   const [data, setData] = useState([]);
   const [images, setImages] = useState([]);
   const [view, setView] = useState(0);
@@ -33,16 +37,17 @@ export function ProductView() {
         console.log(err);
         dispatch(acLoading(false));
       });
-  }, [dispatch, api, id]);
-
-  const deleteItemFromApi = () => {
+    }, [dispatch, api, id]);
+    
+    const deleteItemFromApi = () => {
+    // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
     axios(`${api}/product/delete/${id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         token: "qev234-23fvg24-vg24tae",
       },
-      
+
     })
       .then((res) => {
         console.log(res.data);
@@ -50,35 +55,34 @@ export function ProductView() {
       .catch((err) => {
         console.log(err);
       });
-    navigate("/product")
-    window.location.reload()
+      navigate("/product")
+      window.location.reload()
   }
 
   const editeItemFromApi = (item) => {
-    // const editeProduct = JSON.stringify(item)
-    // const formData = new FormData();
-    // for (let i = 0; images.length > i; i++) {
-    //   formData.append("img", images[i]);
-    // }
-    // formData.append("data", editeProduct);
-    // dispatch(acLoading(true))
-    // axios(`${api}/product/update/${id}`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //     token: "qev234-23fvg24-vg24tae",
-    //   },
-    //   data: formData,
-    // })
+    const editeProduct = JSON.stringify(item)
+    const formData = new FormData();
+    for (let i = 0; images.length > i; i++) {
+      formData.append("img", images[i]);
+    }
+    formData.append("data", editeProduct);
+    dispatch(acLoading(true))
+    axios(`${api}/product/update/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+        token: "qev234-23fvg24-vg24tae",
+      },
+      data: formData,
+    })
 
-    //   .then((res) => {
-    //     dispatch(acLoading(false));
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //     dispatch(acLoading(false))
-    //   });
-
+      .then((res) => {
+        dispatch(acLoading(false));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(acLoading(false))
+      });
   }
 
 
@@ -116,11 +120,11 @@ export function ProductView() {
             </div>
           </div>
           <div id="Right">
-            <h2>About Product</h2>
+            <h2 id="about-product-header-content">About Product</h2>
             {AllData.map((item, indeks) => {
               return (
                 <div key={indeks}>
-                  <div>
+                  <div id="product-view-div-content">
                     <h3>Name: <p>{item.name}</p></h3>
                     <h3>About: <p>{item.about}</p></h3>
                     <h3>Price: <p>{item.price}</p></h3>
@@ -131,17 +135,17 @@ export function ProductView() {
                     <h3>Discaunt: <p>{item.discaunt === "0" ? (item.price / 100) * 10 + +item.price : Math.round(item.price - (((item.price / 100) * 10 + +item.price) / 100) * item.discaunt)}$</p></h3>
                     <h3>For Whom: <p>{item.forWhom}</p></h3>
                   </div>
-                  <div>
-                    <button
+                  <div id="botttom-item-edite-content">
+                    <IconButton
                       onClick={() => {
                         deleteItemFromApi()
                       }}
-                    >Delete</button>
-                    <button
-                      onClick={() => {
-                        editeItemFromApi(item)
-                      }}
-                    >Edite</button>
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                    <IconButton>
+                      <EditIcon />
+                    </IconButton>
                   </div>
                 </div>
               )

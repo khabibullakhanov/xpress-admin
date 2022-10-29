@@ -26,28 +26,26 @@ export function Order() {
 
   // orders.map(async (item) => {
 
-  //   console.log(order);
+  console.log(orders);
   // });
-
+  const massiv = [orders]
   return (
     <div>
-      {orders.map((item) => {
-        const moreOrders = JSON.parse(item.orders);
 
-        console.log(moreOrders);
-
-        return moreOrders.map((item, index) => {
-          return (
-            <div key={index}>
-              <img src={item.img} alt="" />
-              <p>{item.name}</p>
-              <p>{item.size}</p>
-              <p>{item.price}</p>
-              <p>{item.forWhom}</p>
-              <p>{item.season}</p>
-            </div>
-          );
-        });
+      {orders.map((item, index) => {
+        // const orderinside = JSON.parse(item.orders || "[]")
+        return (
+          <div>
+            <p>{index+1}</p>
+            <p>{item.customer}</p>
+            <p>{item.phone}</p>
+            <p>{item.date}</p>
+            <p>{item.orderID}</p>
+            <p>{item.phone}</p>
+            <p>{item.status}</p>
+            <p>{item.total}</p>
+          </div>
+        )
       })}
     </div>
   )

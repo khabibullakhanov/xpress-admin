@@ -72,6 +72,8 @@ export function UserTable() {
                     <img src={myImg} alt="" />
                   </td>
                   <td>{item.name}</td>
+                  <td>{item.name}</td>
+                  <td>{item.name}</td>
                   {/* <td>{item.zipcode}</td> */}
                   <div id="user-table-tbody-btns">
                     <button
