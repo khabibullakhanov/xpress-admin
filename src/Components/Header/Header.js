@@ -35,6 +35,7 @@ export function Header() {
 
   }, []);
 
+  const allSearchData = [data, newData]
 
   return (
     <div id="header">
@@ -55,7 +56,8 @@ export function Header() {
         {
           search ? data.filter((fil) =>
             fil.name.toLowerCase().includes(search) ||
-            fil.about.toLowerCase().includes(search)
+            fil.about.toLowerCase().includes(search) 
+            // fil.customer.toLowerCase().includes(search) 
           ).map((item, index) => {
             return (
               <div>

@@ -37,9 +37,9 @@ export function ProductView() {
         console.log(err);
         dispatch(acLoading(false));
       });
-    }, [dispatch, api, id]);
-    
-    const deleteItemFromApi = () => {
+  }, [dispatch, api, id]);
+
+  const deleteItemFromApi = () => {
     // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
     axios(`${api}/product/delete/${id}`, {
       method: "POST",
@@ -55,12 +55,14 @@ export function ProductView() {
       .catch((err) => {
         console.log(err);
       });
-      navigate("/product")
-      window.location.reload()
+    navigate("/product")
+    window.location.reload()
   }
 
-  const editeItemFromApi = (item) => {
-    const editeProduct = JSON.stringify(item)
+  const editeItemFromApi = (dad) => {
+    navigate(`/product/edite/${id}`)
+    console.log(dad);
+    const editeProduct = JSON.stringify(dad)
     const formData = new FormData();
     for (let i = 0; images.length > i; i++) {
       formData.append("img", images[i]);
@@ -143,7 +145,11 @@ export function ProductView() {
                     >
                       <DeleteIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        editeItemFromApi(item)
+                      }}
+                    >
                       <EditIcon />
                     </IconButton>
                   </div>

@@ -12,8 +12,6 @@ export function AdvertiseCard() {
     const products = useSelector((state) => state.products);
     const order = useSelector((state) => state.orders);
     console.log(products);
-
-    const s = [products]
     return (
         <div id="advertise-container">
             <div id="advertise-container-left">
@@ -23,7 +21,7 @@ export function AdvertiseCard() {
                         <p>Students</p>
                     </div>
                     <div id="advertise-first-card-right">
-                        <h2>{s.length}</h2>
+                        <h2>{products.length}</h2>
                     </div>
                 </div>
                 <div id="advertise-second-card">

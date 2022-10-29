@@ -12,6 +12,7 @@ import { Users } from "./Pages/Users/Users";
 import { NotFounded } from "./Pages/NotFounded/NotFounded";
 import { ProductView } from "./Components/ProductView/ProductView";
 import { useSelector } from "react-redux";
+import { Config } from "./Config/Config"
 
 export function Router() {
   const [openAppbar, setOpenAppbar] = useState(false)
@@ -46,11 +47,12 @@ export function Router() {
             <Route path="/reports" element={<Reports />} />
             <Route path="/addUser" element={<AddUser />} />
             <Route path="*" element={<NotFounded />} />
-            <Route path="/product/:id" element={<ProductView products={products}/>} />
-            <Route path="/product/edite/:id" element={<AddUser/>} />
+            <Route path="/product/:id" element={<ProductView products={products} />} />
+            <Route path="/product/edite/:id" element={<AddUser />} />
           </Routes>
         </div>
       </div>
+      <Config />
     </>
   );
 }

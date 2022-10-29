@@ -18,8 +18,8 @@ export function Appbar({ openMenu, }) {
   })
   const [openAppbar, setOpenAppbar] = useState(false)
   const logOut = () => {
-    localStorage.removeItem("server")
-    localStorage.removeItem("auth")
+    localStorage.clear();
+    sessionStorage.clear();
     window.location.reload()
   }
 

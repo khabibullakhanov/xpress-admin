@@ -15,8 +15,8 @@ export function Order() {
     axios("https://xpress.pandashop.uz/api/order")
       .then((res) => {
         setOrders(res.data);
-        console.log(orders);
         dispatch(acLoading(false))
+        console.log(res.data);
       })
       .catch((err) => {
         dispatch(acLoading(false))
@@ -24,29 +24,54 @@ export function Order() {
       });
   }, []);
 
-  // orders.map(async (item) => {
 
-  console.log(orders);
-  // });
-  const massiv = [orders]
   return (
-    <div>
-
-      {orders.map((item, index) => {
-        // const orderinside = JSON.parse(item.orders || "[]")
-        return (
-          <div>
-            <p>{index+1}</p>
-            <p>{item.customer}</p>
-            <p>{item.phone}</p>
-            <p>{item.date}</p>
-            <p>{item.orderID}</p>
-            <p>{item.phone}</p>
-            <p>{item.status}</p>
-            <p>{item.total}</p>
-          </div>
-        )
-      })}
+    <div id="orders-main-container">
+      <table className="styled-table">
+        <thead>
+          <tr>
+            <th>№</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>OrderId</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Order Name</th>
+            <th>Order Size</th>
+            <th>Order For Whom</th>
+            <th>Order Quantity</th>
+            <th>Order Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {orders.map((item, index) => {
+            const orderinside = JSON.parse(item.orders || "[]")
+            return (
+              <>
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{item.customer}</td>
+                  <td>{item.phone}</td>
+                  <td>{item.orderID}</td>
+                  <td>{item.total}</td>
+                  <td>{item.status}</td>
+                  {orderinside.map((iteks, indeks) => {
+                    return (
+                      <>
+                          <td key={indeks}>{iteks.name}</td>
+                          <td>{iteks.size}</td>
+                          <td>{iteks.forWhom}</td>
+                          <td>{iteks.quantity}</td>
+                          <td>{iteks.price}</td>
+                      </>
+                    )
+                  })}
+                </tr>
+              </>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }
