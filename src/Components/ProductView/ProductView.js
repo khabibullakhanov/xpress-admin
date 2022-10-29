@@ -60,6 +60,7 @@ export function ProductView() {
   }
 
   const editeItemFromApi = (item) => {
+    navigate("edite/:id")
     const editeProduct = JSON.stringify(item)
     const formData = new FormData();
     for (let i = 0; images.length > i; i++) {
