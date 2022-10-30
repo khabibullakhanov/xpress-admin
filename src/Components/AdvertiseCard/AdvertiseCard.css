@@ -1,44 +1,28 @@
 #advertise-container {
     display: flex;
     gap: 2rem;
-    /* flex-wrap: wrap; */
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    /* width: 100%; */
+    max-width: 1800px;
 }
 
-#advertise-container-left {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2rem;
-}
 
-#advertise-container-right {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2rem;
-}
-
-#advertise-first-card {
+#productsId {
     background-color: #F0F9FF;
     display: flex;
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 80%;
+    width: 25%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
 }
 
 
-#advertise-first-card> :first-child {
+#productsId> :first-child {
     transition: 0.3s ease-in-out;
     display: flex;
     flex-direction: column;
@@ -48,29 +32,29 @@
     top: -30px;
 }
 
-#advertise-first-card> :first-child:hover {
+#productsId> :first-child:hover {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-first-card> :nth-child(2) {
+#productsId> :nth-child(2) {
     position: relative;
     bottom: -50px;
     transition: 0.3s ease-in-out;
 }
 
-#advertise-first-card> :nth-child(2):hover {
+#productsId> :nth-child(2):hover {
     transform: scale(1.2);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-second-card {
+#priceId {
     background-color: #FEF6FB;
     display: flex;
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 80%;
+    width: 25%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -78,7 +62,7 @@
 
 
 
-#advertise-second-card>:first-child {
+#priceId>:first-child {
     position: relative;
     top: -30px;
     display: flex;
@@ -88,36 +72,36 @@
     transition: 0.3s ease-in-out;
 }
 
-#advertise-second-card> :nth-child(1):hover {
+#priceId> :nth-child(1):hover {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-second-card>:nth-child(2) {
+#priceId>:nth-child(2) {
     position: relative;
     bottom: -50px;
     transition: 0.3s ease-in-out;
 }
 
-#advertise-second-card> :nth-child(2):hover {
+#priceId> :nth-child(2):hover {
     transform: scale(1.2);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-third-card {
+#enoughId {
     background-color: #FEFBEC;
     display: flex;
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 80%;
+    width: 25%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
 }
 
 
-#advertise-third-card>:first-child {
+#enoughId>:first-child {
     position: relative;
     top: -30px;
     display: flex;
@@ -127,29 +111,29 @@
     transition: 0.3s ease-in-out;
 }
 
-#advertise-third-card> :nth-child(1):hover {
+#enoughId> :nth-child(1):hover {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-third-card>:nth-child(2) {
+#enoughId>:nth-child(2) {
     position: relative;
     bottom: -50px;
     transition: 0.3s ease-in-out;
 }
 
-#advertise-third-card> :nth-child(2):hover {
+#enoughId> :nth-child(2):hover {
     transform: scale(1.11);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-fourth-card {
+#ordersId {
     background-color: #FCBC18;
     display: flex;
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 80%;
+    width: 25%;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -157,28 +141,29 @@
 
 
 
-#advertise-fourth-card>:first-child {
+#ordersId>:first-child {
     position: relative;
     top: -30px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start; */
     gap: 1rem;
     transition: 0.3s ease-in-out;
 }
 
-#advertise-fourth-card> :nth-child(1):hover {
+#ordersId> :nth-child(1):hover {
     transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
 
-#advertise-fourth-card> :nth-child(2) {
+#ordersId> :nth-child(2) {
     position: relative;
     bottom: -50px;
     transition: 0.3s ease-in-out;
 }
 
-#advertise-fourth-card> :nth-child(2):hover {
+#ordersId> :nth-child(2):hover {
     transform: scale(1.3);
     transition: 0.3s ease-in-out;
 }
@@ -193,7 +178,7 @@
         flex-direction: column;
         max-height: 700px;
         padding-top: 25%;
-        min-width: 80%;
+        min-width: 25%;
         overflow: auto;
     }
 
