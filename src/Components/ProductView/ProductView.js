@@ -40,7 +40,7 @@ export function ProductView() {
   }, [dispatch, api, id]);
 
   const deleteItemFromApi = () => {
-    // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+    enqueueSnackbar("Product succesfully deleted", { variant: "success" });
     axios(`${api}/product/delete/${id}`, {
       method: "POST",
       headers: {

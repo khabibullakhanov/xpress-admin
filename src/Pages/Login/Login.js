@@ -30,11 +30,6 @@ export function Login() {
             },
         })
             .then((res) => {
-                //   enqueueSnackbar(`${res.data.message} ${res.data.user.name} `, {
-                //     variant: "success",
-                //   });
-                //   dispatch(acUser(res.data.user));
-                //   dispatch(acLoading(false));
                 if (chek) {
                     localStorage.setItem("admin", JSON.stringify(res.data))
                     dispatch(acAdmin(res.data));
@@ -53,37 +48,11 @@ export function Login() {
                 });
                 dispatch(acLoading(false));
             });
+        reset()
 
     }
 
     return (
-        // <div className='login'>
-        //     <form className='login-form' onSubmit={handleSubmit(onSubmit)}>
-        //         <h1>Login Here</h1>
-        //         <input type="text"
-        //             {...register("login")}
-        //             placeholder='Enter your email address'
-        //             required
-        //             autoComplete="off"
-        //             autoCapitalize="off"
-        //         />
-        //         <input type="password"
-        //             {...register("password")}
-        //             placeholder='Enter your password'
-        //             required
-        //             autoComplete="off"
-        //             autoCapitalize="off"
-        //         />
-        //         <div className='remember'>
-        //             <label>
-        //                 <input type="checkbox" {...register("chek")} />
-        //                 Remember me
-        //             </label>
-        //             <a href="https://support.google.com/mail/#topic=7065107" >forget the password?</a>
-        //         </div>
-        //         <button type='submit' className='submit-btn'>Submit</button>
-        //     </form>
-        // </div>
         <>
             <img class="wave" src={vawe} />
             <div class="container">
@@ -99,9 +68,8 @@ export function Login() {
                                 <i class="fas fa-user"></i>
                             </div>
                             <div class="div">
-                                {/* <h5>Username</h5> */}
                                 <input type="text" class="input"
-                                placeholder='Username'
+                                    placeholder='Username'
                                     {...register("login")}
                                     required
                                     autoComplete="off"
@@ -114,9 +82,8 @@ export function Login() {
                                 <i class="fas fa-lock"></i>
                             </div>
                             <div class="div">
-                                {/* <h5>Password</h5> */}
                                 <input type="password" class="input"
-                                placeholder='Password'
+                                    placeholder='Password'
                                     {...register("password")}
                                     required
                                     autoComplete="off"

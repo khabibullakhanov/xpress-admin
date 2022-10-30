@@ -13,10 +13,6 @@ import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
 
 export function Appbar({ openMenu, }) {
 
-  const [profileImage, setProfileImage] = useState({
-    prImg: {},
-  })
-  const [openAppbar, setOpenAppbar] = useState(false)
   const logOut = () => {
     localStorage.clear();
     sessionStorage.clear();
@@ -28,7 +24,7 @@ export function Appbar({ openMenu, }) {
       <aside style={openMenu ? { width: "90%" } : {}}>
         <div style={openMenu ? { display: "flex", transition: "0.5s ease-in-out" } : {}} id="appbar-profile-content">
           <figure id="links-container-profile-image">
-            <img src={profileImage.prImg.size ? URL.createObjectURL(profileImage.prImg) : profileImg} alt="" />
+            <img src={profileImg} alt="" />
             {/* <label id="change-color">
               <input type="file"
                 onChange={(e) => {

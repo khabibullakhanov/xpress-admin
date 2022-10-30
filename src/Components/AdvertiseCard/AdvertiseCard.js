@@ -27,10 +27,10 @@ export function AdvertiseCard() {
                 <div id="advertise-second-card">
                     <div>
                         <img src={saveIcon} alt="" />
-                        <p>Works</p>
+                        <p>Ordesr</p>
                     </div>
                     <div>
-                        <h2>04</h2>
+                        <h2>{order.length}</h2>
                     </div>
                 </div>
             </div>
