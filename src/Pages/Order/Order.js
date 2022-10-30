@@ -1,29 +1,44 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
-import axios from "axios";
-import { useDispatch } from "react-redux";
-import { acLoading } from "../../Redux/Loading";
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import { useSelector } from "react-redux";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 
 export function Order() {
 
-  const dispatch = useDispatch()
-  const [orders, setOrders] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [orderInside, setOrderInside] = useState([])
+  const orders = useSelector((state) => state.orders);
+
+  // useEffect(() => {
+  //   dispatch(acLoading(true))
+  //   axios("https://xpress.pandashop.uz/api/order")
+  //     .then((res) => {
+  //       setOrders(res.data);
+  //       dispatch(acLoading(false))
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => {
+  //       dispatch(acLoading(false))
+  //       console.log(err.response.data);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    dispatch(acLoading(true))
-    axios("https://xpress.pandashop.uz/api/order")
-      .then((res) => {
-        setOrders(res.data);
-        dispatch(acLoading(false))
-        console.log(res.data);
-      })
-      .catch((err) => {
-        dispatch(acLoading(false))
-        console.log(err.response.data);
-      });
-  }, []);
+    window.addEventListener("click", (e) => {
+      if (e.target.className === "modal activ") {
+        setModal(false);
+      }
+    });
+  });
 
+  const moreInfo = (item) => {
+    setModal(true);
+    setOrderInside(JSON.parse(item.orders));
+  };
+
+  const moreOrders = [...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders]
 
   return (
     <div id="orders-main-container">
@@ -36,42 +51,61 @@ export function Order() {
             <th>OrderId</th>
             <th>Total</th>
             <th>Status</th>
-            <th>Order Name</th>
-            <th>Order Size</th>
-            <th>Order For Whom</th>
-            <th>Order Quantity</th>
-            <th>Order Price</th>
+            <th>Orders</th>
           </tr>
         </thead>
         <tbody>
-          {orders.map((item, index) => {
-            const orderinside = JSON.parse(item.orders || "[]")
+          {moreOrders.map((item, index) => {
             return (
-              <>
-                <tr key={index}>
+              <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{item.customer}</td>
                   <td>{item.phone}</td>
                   <td>{item.orderID}</td>
                   <td>{item.total}</td>
                   <td>{item.status}</td>
-                  {orderinside.map((iteks, indeks) => {
-                    return (
-                      <>
-                          <td key={indeks}>{iteks.name}</td>
-                          <td>{iteks.size}</td>
-                          <td>{iteks.forWhom}</td>
-                          <td>{iteks.quantity}</td>
-                          <td>{iteks.price}</td>
-                      </>
-                    )
-                  })}
-                </tr>
-              </>
+                  <td id="see-order-td"
+                    onClick={() => {
+                      moreInfo(item, index)
+                    }}
+                  >See Order <RemoveRedEyeIcon /></td>
+              </tr>
             )
           })}
         </tbody>
       </table>
+      <div className={modal ? "modal activ" : "modal"}>
+        <div className={modal ? "modal_body activ" : "modal_body"}>
+          <button
+            id="close_form"
+            onClick={(e) => {
+              e.preventDefault();
+              setModal(!modal); 
+            }}
+          >
+            <CancelIcon/>
+          </button>
+          {orderInside.map((itemOrder, orderIndex) => {
+            return (
+              <div key={orderIndex} className="mappedOrder">
+                <figure className="mappedOrderFigure">
+                  <img src={itemOrder.img} alt="" />
+                </figure>
+                <div className="mappedOrderInfo">
+                  <p>Name: {itemOrder.name}</p>
+                  <p>Size: {itemOrder.size}</p>
+                  <p>For Whom: {itemOrder.forWhom}</p>
+                  <p>Quantity: {itemOrder.quantity}</p>
+                  <p>Price: {itemOrder.price}</p>
+                  <p>Discaunt: {itemOrder.discaunt}</p>
+                  <p>Season: {itemOrder.season}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
     </div>
   )
 }

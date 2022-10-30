@@ -1,38 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
+import React from "react";
 import "./AllProducts.css"
-import { useDispatch } from "react-redux";
-import { acLoading } from "../../Redux/Loading";
+import { useSelector} from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ScrollToTop from "react-scroll-to-top";
-
-const api = process.env.REACT_APP_API;
 
 export function AllProducts() {
     const navigate = useNavigate()
-    const id = useLocation().pathname.split("/").pop();
-    const [product, setProduct] = useState([]);
-    const [images, setImages] = useState([]);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(acLoading(true));
-        axios("https://xpress.pandashop.uz/api/product", {
-            headers: {
-                token: "qev234-23fvg24-vg24tae",
-            },
-        })
-            .then((res) => {
-                setProduct(res.data);
-                dispatch(acLoading(false));
-            })
-            .catch((err) => {
-                console.log(err);
-                dispatch(acLoading(false))
-            });
-    }, []);
-
+    const product = useSelector((state) => state.products);
 
 
     return (
@@ -45,7 +18,7 @@ export function AllProducts() {
                         return (
                             <div key={item.id}>
                                 <div
-                                    style={item.img === [] ? {diplay:"none"}: {}}
+                                    style={item.img === [] ? { diplay: "none" } : {}}
                                     id="product-content-item"
                                     onClick={() => {
                                         navigate(`/product/${item.id}`);
@@ -55,7 +28,7 @@ export function AllProducts() {
                                         <img src={imagess} alt="" />
                                     </figure>
                                     <p>
-                                        <span>{index+1}.    </span>
+                                        <span>{index + 1}.    </span>
                                         <span>{item.name}</span>
                                     </p>
                                 </div>
@@ -64,7 +37,7 @@ export function AllProducts() {
                     })}
 
                 </div>
-                
+
             </div>
         </>
     )

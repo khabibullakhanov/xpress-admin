@@ -16,14 +16,18 @@
 }
 
 .styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+    background-color: #F8F8F8;
+    color: #ACACAC;
+    text-align: center;
+    height: 70px;
+    position: sticky;
+    top: 0;
 }
 
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
+    text-align: center;
 }
 
 .styled-table tbody tr {
@@ -35,10 +39,117 @@
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
+    border-bottom: 2px solid #c7c7c7;
 }
 
 .styled-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+#see-order-td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+#see-order-td> :last-child {
+    color: gray;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(transparent,#c7c7c7);
+    border-radius: 6px;
+} 
+
+
+/* Behruz  */
+
+.modal_body {
+  width: 650px;
+  height: auto;
+  max-height: 100%;
+  background: #ffffff;
+  box-shadow: 2px 5px 10px #0000001a;
+  border-radius: 6px;
+  position: relative;
+  padding: 20px;
+  overflow: hidden;
+  transform: translateY(-200px);
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.modal {
+  width: 100%;
+  height: 100%;
+  background:#42414178;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: auto;
+  opacity: 0;
+  z-index: -99;
+  transition: all 0.4s ease-in-out;
+}
+
+.modal.activ {
+  opacity: 1;
+  z-index: 9999;
+}
+
+.modal_body.activ {
+  opacity: 1;
+  transform: translate(0);
+  transition-delay: 0.3s;
+}
+
+.mappedOrder {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
+.mappedOrderFigure {
+  width: 280px;
+  height: 360px;
+}
+
+.mappedOrderFigure > img {
+  width: 100%;
+  height: 100%;
+}
+
+.mappedOrderInfo > p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 145%;
+  letter-spacing: 1.2px;
+}
+
+#close_form {
+    width: 99%;
+    background: none;
+    height: 5px;
+    outline: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: grey;
 }
