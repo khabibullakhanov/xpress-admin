@@ -31,7 +31,7 @@ export function UserTable() {
         console.log(err);
         dispatch(acLoading(false));
       });
-  }, []);
+  }, [dispatch, api]);
   const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
   const allData = localUsers.concat(data);
