@@ -13,7 +13,6 @@ export function AllProducts() {
             <div id="all-products-content">
                 <div data-aos="fade-down" id="all-products-content-inside">
                     {product.map((item, index) => {
-                        // const imagess = JSON.parse(item.img);
                         const imagess = JSON.parse(item.img || "[]")[0];
                         return (
                             <div key={item.id}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "./Login.css"
 import { useForm } from 'react-hook-form';
 import { useSnackbar } from "notistack";
@@ -54,14 +54,14 @@ export function Login() {
 
     return (
         <>
-            <img class="wave" src={vawe} />
+            <img class="wave" src={vawe} alt="" />
             <div class="container">
                 <div class="img">
-                    <img src={bgLogin} />
+                    <img src={bgLogin} alt="" />
                 </div>
                 <div class="login-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <img src={avatarLogin} />
+                        <img src={avatarLogin} alt="" />
                         <h2 class="title">Welcome</h2>
                         <div class="input-div one">
                             <div class="i">

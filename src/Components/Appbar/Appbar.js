@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Appbar.css";
 import { NavLink } from "react-router-dom";
 import order from "../../Assets/Icons/shopping-basket-Light.svg";
