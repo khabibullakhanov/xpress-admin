@@ -1,0 +1,133 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px 0 50px;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-end;
+  height: 100px;
+  position: relative;
+  top: 0;
+}
+
+#header-right-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  right: 50px;
+  gap: 1rem;
+  top: -21px; 
+  z-index: 9999;
+  background-color: rgba(246, 246, 246, 0.607);
+  padding: 25px 35px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+#header-right-bottom>a {
+  color: black;
+  font-weight: 600;
+}
+
+#header-right-bottom-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+#header_left> :nth-child(2) {
+  color: #aeaeae;
+}
+
+#header_right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2rem;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+#header_right_user {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  /* gap: 15px; */
+}
+
+#header_right_user>figure {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFC145;
+}
+
+#header_right_user_text> :nth-child(2) {
+  color: #aeaeae;
+}
+
+#sub-basket {
+  position: relative;
+  top: -3px;
+  /* left: -5px; */
+}
+
+#header-right-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #E5E5E5;
+  border-radius: 8px;
+  padding: 10px 16px;
+  width: 25%;
+}
+
+#header-right-form>input {
+  border: none;
+  outline: none;
+  color: #C4C4C4;
+  font-size: 18px;
+  width: 95%;
+}
+
+#header-bell-icon {}
+
+#header-bell-icon:hover {
+  transition: 0.2s ease-in-out;
+  -webkit-animation-name: animate;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 0;
+  -webkit-animation-timing-function: ease-in-out;
+}
+
+@media only screen and (max-width: 960px) {
+  #header-right-form  {
+    width: 100%;
+  }
+}
+
+@keyframes animate {
+
+  10%,
+  90% {
+    transform: rotate(-20deg);
+    transition: 0.1s ease-in-out;
+  }
+
+  40%,
+  90% {
+    transform: rotate(25deg);
+    transition: 0.1s ease-in-out;
+  }
+
+  50% {
+    transition: 0.1s ease-in-out;
+    transform: rotate(-25deg);
+  }
+}
