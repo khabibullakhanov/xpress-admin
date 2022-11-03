@@ -21,7 +21,7 @@ export function AdvertiseCard() {
     const HomeReturns = [
         {
             id: 0,
-            id: "productsId",
+            idName: "productsId",
             name: "Products:",
             show: products.length,
             icon: <WidgetsIcon style={{ color: "brown" }} />,
@@ -29,7 +29,7 @@ export function AdvertiseCard() {
         },
         {
             id: 1,
-            id: "priceId",
+            idName: "priceId",
             name: "Total Price:",
             show: products.reduce((a, b) => a + b.caunt * b.price, 0),
             icon: <PriceChangeIcon style={{ color: "dodgerblue" }} />,
@@ -37,7 +37,7 @@ export function AdvertiseCard() {
         },
         {
             id: 2,
-            id: "enoughId",
+            idName: "enoughId",
             name: "Enough Products:",
             show: products.filter((item) => item.caunt < 5).length,
             icon: <CategoryIcon style={{ color: "grey" }} />,
@@ -45,7 +45,7 @@ export function AdvertiseCard() {
         },
         {
             id: 3,
-            id: "ordersId",
+            idName: "ordersId",
             name: "Orders: ",
             show: order.length,
             icon: <BorderColorIcon />,
@@ -55,61 +55,15 @@ export function AdvertiseCard() {
 
     return (
         <div id="advertise-container">
-            {/* <div id="advertise-container-left">
-                <div id="advertise-first-card">
-                    <div id="advertise-first-card-left">
-                        <img src={studentCap} alt="" />
-                        <p>Students</p>
-                    </div>
-                    <div id="advertise-first-card-right">
-                        <h2>{products.length}</h2>
-                    </div>
-                </div>
-                <div id="advertise-second-card">
-                    <div>
-                        <img src={saveIcon} alt="" />
-                        <p>Orders</p>
-                    </div>
-                    <div>
-                        <h2>{order.length}</h2>
-                    </div>
-                </div>
-            </div>
-            <div id="advertise-container-right">
-                <div id="advertise-third-card">
-                    <div>
-                        <img src={dollarIcon} alt="" />
-                        <p>Budget</p>
-                    </div>
-                    <div>
-                        <h2>Pul Kerak 😢</h2>
-                    </div>
-                </div>
-                <div data-aos="fade-down" id="advertise-fourth-card">
-                    <div>
-                        <img src={userIcon} alt="" />
-                        <p>Teachers</p>
-                    </div>
-                    <div>
-                        <h2>2</h2>
-                    </div>
-                </div>
-            </div> */}
             {HomeReturns.map((item, index) => {
                 const path = item.path
                 return (
-                    // <div className={item.className} key={index}>
-                    //     <p>{item.name}</p>
-                    //     <div className="howMuch">
-                    //         <p>{item.show}</p>
-                    //     </div>
-                    // </div>
                     <div
                         key={index}
                         onClick={() => {
                             navigate(path)
                         }}
-                        data-aos="fade-down" id={item.id}>
+                        data-aos="fade-down" id={item.idName}>
                         <div>
                             <p>{item.icon}</p>
                             <p>{item.name}</p>

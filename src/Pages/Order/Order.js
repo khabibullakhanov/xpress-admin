@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./Order.css";
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import CancelIcon from '@mui/icons-material/Cancel';
+import { acOpenModal } from "../../Redux/OpenModal"
 
 
 export function Order() {
-
-  const [modal, setModal] = useState(false);
+  const dispatch = useDispatch()
+  const openModal = useSelector((state) => state.openModal)
   const [orderInside, setOrderInside] = useState([])
   const orders = useSelector((state) => state.orders);
 
@@ -28,17 +29,17 @@ export function Order() {
   useEffect(() => {
     window.addEventListener("click", (e) => {
       if (e.target.className === "modal activ") {
-        setModal(false);
+        dispatch(acOpenModal(false))
       }
     });
   });
 
   const moreInfo = (item) => {
-    setModal(true);
+    dispatch(acOpenModal(true))
     setOrderInside(JSON.parse(item.orders));
   };
 
-  const moreOrders = [...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders]
+  // const moreOrders = [...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders]
 
   return (
     <div id="orders-main-container">
@@ -55,35 +56,35 @@ export function Order() {
           </tr>
         </thead>
         <tbody>
-          {moreOrders.map((item, index) => {
+          {orders.map((item, index) => {
             return (
               <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{item.customer}</td>
-                  <td>{item.phone}</td>
-                  <td>{item.orderID}</td>
-                  <td>{item.total}</td>
-                  <td>{item.status}</td>
-                  <td id="see-order-td"
-                    onClick={() => {
-                      moreInfo(item, index)
-                    }}
-                  >See Order <RemoveRedEyeIcon /></td>
+                <td>{index + 1}</td>
+                <td>{item.customer}</td>
+                <td>{item.phone}</td>
+                <td>{item.orderID}</td>
+                <td>{item.total}</td>
+                <td>{item.status}</td>
+                <td id="see-order-td"
+                  onClick={() => {
+                    moreInfo(item, index)
+                  }}
+                >See Order <RemoveRedEyeIcon /></td>
               </tr>
             )
           })}
         </tbody>
       </table>
-      <div className={modal ? "modal activ" : "modal"}>
-        <div className={modal ? "modal_body activ" : "modal_body"}>
+      <div className={openModal ? "modal activ" : "modal"}>
+        <div className={openModal ? "modal_body activ" : "modal_body"}>
           <button
             id="close_form"
             onClick={(e) => {
               e.preventDefault();
-              setModal(!modal); 
+              dispatch(acOpenModal(false))
             }}
           >
-            <CancelIcon/>
+            <CancelIcon />
           </button>
           {orderInside.map((itemOrder, orderIndex) => {
             return (

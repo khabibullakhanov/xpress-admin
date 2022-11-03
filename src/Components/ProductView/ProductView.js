@@ -9,6 +9,7 @@ import axios from "axios";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useSnackbar } from "notistack";
+import {acRelodeProduct} from "../../Redux/Products.js"
 
 export function ProductView() {
   const enqueueSnackbar = useSnackbar()
@@ -58,34 +59,6 @@ export function ProductView() {
       });
     navigate("/product")
     window.location.reload()
-  }
-
-  const editeItemFromApi = (dad) => {
-    navigate(`/product/edite/${id}`)
-    console.log(dad);
-    const editeProduct = JSON.stringify(dad)
-    const formData = new FormData();
-    for (let i = 0; images.length > i; i++) {
-      formData.append("img", images[i]);
-    }
-    formData.append("data", editeProduct);
-    dispatch(acLoading(true))
-    axios(`${api}/product/update/${id}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "multipart/form-data",
-        token: "qev234-23fvg24-vg24tae",
-      },
-      data: formData,
-    })
-
-      .then((res) => {
-        dispatch(acLoading(false));
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch(acLoading(false))
-      });
   }
 
 
@@ -138,6 +111,31 @@ export function ProductView() {
                     <h3>Discaunt: <p>{item.discaunt === "0" ? (item.price / 100) * 10 + +item.price : Math.round(item.price - (((item.price / 100) * 10 + +item.price) / 100) * item.discaunt)}$</p></h3>
                     <h3>For Whom: <p>{item.forWhom}</p></h3>
                   </div>
+                  <input
+                    type="checkbox"
+                    checked={item.ads ? true : false}
+                    onChange={(e) => {
+                      dispatch(acLoading(true));
+                      axios(`${api}/ads/open`, {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          token: "sdgergerfd",
+                          id: item.id,
+                        },
+                      })
+                        .then((res) => {
+                          console.log(res.data);
+                          dispatch(acRelodeProduct());
+                          dispatch(acLoading(false));
+                        })
+                        .catch((err) => {
+                          console.log(err);
+                          dispatch(acRelodeProduct());
+                          dispatch(acLoading(false));
+                        });
+                    }}
+                  />
                   <div id="botttom-item-edite-content">
                     <IconButton
                       onClick={() => {
@@ -146,11 +144,7 @@ export function ProductView() {
                     >
                       <DeleteIcon />
                     </IconButton>
-                    <IconButton
-                      onClick={() => {
-                        editeItemFromApi(item)
-                      }}
-                    >
+                    <IconButton>
                       <EditIcon />
                     </IconButton>
                   </div>
