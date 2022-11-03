@@ -9,6 +9,11 @@
     background-color: #F8F8F8;
 }
 
+#users-table-thead {
+    background-color: #c7c7c7;
+    color: white;
+}
+
 #user-table-header-part {
     display: flex;
     justify-content: space-between;
@@ -19,7 +24,7 @@
 }
 
 #user-table-header-part >div> button {
-    background: #FEAF00;
+    background: #c7c7c7;
     outline: none;
     border: none;
     padding: 15px 25px;
@@ -100,19 +105,19 @@
     background: none;
     border: none;
     outline: none;
-    color: #FEAF00;
+    color: #c7c7c7;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(transparent,#ffce65);
     border-radius: 6px;
-}   
+}    */
 
-#user-table-tbody-my-img > img {
+#user-table-tbody-my-img > figure >img {
     width: 60px;
     height: 60px;
     border-radius: 8px;

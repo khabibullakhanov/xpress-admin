@@ -4,28 +4,19 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import { useSelector, useDispatch } from "react-redux";
 import CancelIcon from '@mui/icons-material/Cancel';
 import { acOpenModal } from "../../Redux/OpenModal"
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import axios from "axios";
+import { useSnackbar } from "notistack";
+import IconButton from '@mui/material/IconButton';
+import { acLoading } from "../../Redux/Loading";
 
 export function Order() {
+  const enqueueSnackbar = useSnackbar()
   const dispatch = useDispatch()
   const openModal = useSelector((state) => state.openModal)
   const [orderInside, setOrderInside] = useState([])
   const orders = useSelector((state) => state.orders);
-
-  // useEffect(() => {
-  //   dispatch(acLoading(true))
-  //   axios("https://xpress.pandashop.uz/api/order")
-  //     .then((res) => {
-  //       setOrders(res.data);
-  //       dispatch(acLoading(false))
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       dispatch(acLoading(false))
-  //       console.log(err.response.data);
-  //     });
-  // }, []);
-
+  const api = process.env.REACT_APP_API;
   useEffect(() => {
     window.addEventListener("click", (e) => {
       if (e.target.className === "modal activ") {
@@ -39,7 +30,26 @@ export function Order() {
     setOrderInside(JSON.parse(item.orders));
   };
 
-  // const moreOrders = [...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders, ...orders]
+  function deleteOrder(orderId) {
+    dispatch(acLoading(true))
+    axios(`https://xpress.pandashop.uz/api/order/delete/${orderId}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token: "token",
+      },
+    })
+    .then((res) => {
+      window.location.reload()
+      dispatch(acLoading(false))
+        enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
 
   return (
     <div id="orders-main-container">
@@ -53,6 +63,7 @@ export function Order() {
             <th>Total</th>
             <th>Status</th>
             <th>Orders</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -69,7 +80,16 @@ export function Order() {
                   onClick={() => {
                     moreInfo(item, index)
                   }}
-                >See Order <RemoveRedEyeIcon /></td>
+                >See Order <IconButton>
+                    <RemoveRedEyeIcon />
+                  </IconButton></td>
+                <td><IconButton
+                  onClick={() => {
+                    deleteOrder(item.id)
+                  }}
+                >
+                  <DeleteIcon style={{ color: "gray" }} />
+                </IconButton></td>
               </tr>
             )
           })}

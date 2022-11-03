@@ -1,40 +1,23 @@
 import React, { useState, useEffect } from "react";
 import "./UserTable.css";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { acLoading } from "../../Redux/Loading";
-import penIcon from "../../Assets/Icons/pen-Regular.svg";
+import EditIcon from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import myImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg";
+import { IconButton } from "@mui/material";
 const api = process.env.REACT_APP_API;
 
 export function UserTable() {
+  const product = useSelector((state) => state.products);
   const [openModal, setOpenModal] = useState(false);
   const [imgData, setImgData] = useState([]);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
   const navigate = useNavigate();
-  useEffect(() => {
-    dispatch(acLoading(true));
-    axios
-      .get(`${api}/product`, {
-        headers: {
-          token: "qev234-23fvg24-vg24tae",
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-        dispatch(acLoading(false));
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch(acLoading(false));
-      });
-  }, [dispatch, api]);
-  const localUsers = JSON.parse(localStorage.getItem("users") || "[]");
 
-  const allData = localUsers.concat(data);
+
 
   return (
     <div id="user-table-container">
@@ -50,101 +33,56 @@ export function UserTable() {
           </button>
         </div>
       </div>
-      <div id="user-table-div">
-        <table>
-          <thead id="user-table-thead">
-            <tr>
+      <div id="orders-main-container">
+        <table className="styled-table">
+          <thead >
+            <tr id="users-table-thead">
               <th>Name</th>
               <th>Email</th>
               <th>Addres</th>
               <th>ZipCode</th>
-              <th></th>
+              <th>See</th>
             </tr>
           </thead>
-          {allData.map((item, index) => {
-            setTimeout(() => {
-              dispatch(acLoading(false));
-            }, 700);
-            return (
-              <tbody id="user-table-tbody">
-                <tr>
+          <tbody>
+            {product.map((item, index) => {
+            const images = JSON.parse(item.img)[0];
+              setTimeout(() => {
+                dispatch(acLoading(false));
+              }, 700);
+              return (
+                <tr key={index}>
                   <td id="user-table-tbody-my-img">
-                    <img src={myImg} alt="" />
+                        <figure>
+                          <img src={images} alt="" />
+                        </figure>
+          
                   </td>
+
+
                   <td>{item.name}</td>
+
+
                   <td>{item.name}</td>
+
                   <td>{item.name}</td>
-                  {/* <td>{item.zipcode}</td> */}
-                  <div id="user-table-tbody-btns">
-                    <button
+
+                  <td>
+                    <IconButton
                       onClick={() => {
                         navigate(`/product/${item.id}`);
                       }}
                     >
-                      <img src={penIcon} alt="" />
-                    </button>
-                  </div>
+                      <EditIcon />
+                    </IconButton>
+                  </td>
                 </tr>
-              </tbody>
-            );
-          })}
+              );
+            })}
+          </tbody>
         </table>
       </div>
-      <div className={openModal ? "product-inside open" : "product-inside"}>
-        <form className="product_form">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setOpenModal(!openModal);
-            }}
-          >
-            X
-          </button>
-          <p>Add new Product</p>
-          <label>
-            <p>Name</p>
-            <input type="text" />
-          </label>
-          <label>
-            <p>Price</p>
-            <input type="text" />
-          </label>
-          <label>
-            <p>Quantity</p>
-            <input type="text" />
-          </label>
-          <label>
-            <p>About Product</p>
-            <input type="text" />
-          </label>
-          <label id="product_select_img">
-            <p>Select images</p>
-            <input
-              type="file"
-              accept="image/png, image/jpeg, image/jpg"
-              multiple="multiple"
-              onChange={(e) => {
-                setImgData([...imgData, ...e.target.files]);
-              }}
-            />
-          </label>
-          {imgData.map((item, index) => {
-            return (
-              <div>
-                <img src={URL.createObjectURL(item)} alt="" />
-              </div>
-            );
-          })}
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              setOpenModal(false);
-            }}
-          >
-            Add
-          </button>
-        </form>
-      </div>
-    </div>
+
+    </div >
   );
 }

@@ -6,6 +6,7 @@ import { reProducts } from "./Products";
 import { reOrder } from "./Order";
 import { reOpenModal } from "./OpenModal"
 import { reAds } from "./Ads";
+import { reRelodeProduct } from "./Products";
 
 
 const reducer = combineReducers({
@@ -15,7 +16,8 @@ const reducer = combineReducers({
   products: reProducts,
   orders: reOrder,
   openModal: reOpenModal,
-  ads: reAds
+  ads: reAds,
+  relodeProduct: reRelodeProduct,
 });
 
 export const Store = configureStore({

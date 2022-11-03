@@ -1,7 +1,7 @@
 #orders-main-container {
     width: 100%;
-    overflow-x: scroll;
-    max-width: 1300px;
+    overflow-y: scroll;
+    max-height: 750px;
     flex-wrap: wrap;
 }
 
@@ -31,8 +31,9 @@
 }
 
 .styled-table tbody tr {
+  width: 100%;
     border-bottom: 1px solid #dddddd;
-}
+  }
 
 .styled-table tbody tr:nth-of-type(even) {
     background-color: #f3f3f3;
@@ -40,6 +41,12 @@
 
 .styled-table tbody tr:last-of-type {
     border-bottom: 2px solid #c7c7c7;
+}
+
+.styled-table tbody tr > td >img {
+  height: 50px;
+  width: 50px;
+  border-radius: 3px;
 }
 
 .styled-table tbody tr.active-row {
@@ -59,12 +66,12 @@
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(transparent,#c7c7c7);
-    border-radius: 6px;
+  background: linear-gradient(transparent,#c7c7c7);
+  border-radius: 6px;
 } 
 
 
@@ -86,7 +93,11 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow-y: scroll;
+  max-height: 500px;
 }
+
+
 
 .modal {
   width: 100%;
@@ -152,4 +163,6 @@
     align-items: center;
     justify-content: end;
     color: grey;
+    position: sticky;
+    top: 0;
 }

@@ -9,7 +9,7 @@ import axios from "axios";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useSnackbar } from "notistack";
-import {acRelodeProduct} from "../../Redux/Products.js"
+import { acRelodeProduct } from "../../Redux/Products.js"
 
 export function ProductView() {
   const enqueueSnackbar = useSnackbar()
@@ -61,6 +61,9 @@ export function ProductView() {
     window.location.reload()
   }
 
+  const editeItemFromApi = () => {
+    navigate(`/product/edite/${id}`)
+  }
 
   const AllData = [data];
   return (
@@ -144,48 +147,17 @@ export function ProductView() {
                     >
                       <DeleteIcon />
                     </IconButton>
-                    <IconButton>
+                    <IconButton
+                      onClick={() => {
+                        editeItemFromApi()
+                      }}
+                    >
                       <EditIcon />
                     </IconButton>
                   </div>
                 </div>
               )
             })}
-            {/* <div id="topCard">
-              <h2>{data.name}</h2>
-              <form>
-                <p id="s-name">size :</p>
-                {sizeData.map((item, index) => {
-                  const sizes = JSON.parse(item.PRsize || "[]");
-                  return (
-                    <div id="SisZeDiv" key={index}>
-                    </div>
-                  );
-                })}
-                {AllData.map((itemks) => {
-                  return (
-                    <button
-                      type="button"
-                      id="tanlshBTN">
-                      Tanlash
-                    </button>
-                  );
-                })}
-              </form>
-            </div>
-            <div id="BottomCardFull">
-              <h2>About</h2>
-              <p id="AboutP">{data.about}</p>
-              <span id="linebtn"></span>
-              <Link to="/delivery" id="Abouth1btn">
-                RELATED TAGS (TAGS)
-              </Link>
-              <span id="linebtn"></span>
-              <Link to="/delivery" id="Abouth1btn">
-                Comments
-              </Link>
-              <span id="linebtn"></span>
-            </div> */}
           </div>
         </div>
       </div>
