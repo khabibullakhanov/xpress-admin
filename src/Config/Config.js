@@ -16,7 +16,7 @@ export function Config() {
     axios
       .get(`${api}/product`, {
         headers: {
-          token: "qev234-23fvg24-vg24tae",
+          token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
         },
       })
       .then((res) => {
@@ -32,7 +32,7 @@ export function Config() {
     axios
       .get(`${api}/order`, {
         headers: {
-          token: "qev234-23fvg24-vg24tae",
+          token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
         },
       })
       .then((res) => {
@@ -47,7 +47,7 @@ export function Config() {
     axios
       .get(`${api}/ads`, {
         headers: {
-          token: "qev234-23fvg24-vg24tae",
+          token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
         },
       })
       .then((res) => {

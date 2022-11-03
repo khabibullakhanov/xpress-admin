@@ -21,7 +21,7 @@ export function Header() {
           e.preventDefault()
         }} id="header-right-form">
           <input placeholder="Search..." value={search} onChange={(e) => {
-            setSearch(e.target.value.toLowerCase());
+            setSearch(e.target.value);
             dispatch(acSearch(e.target.value))
           }} name="search" type="text" />
           <img src={searchIcon} alt="" />
@@ -32,7 +32,7 @@ export function Header() {
         {
           search ? products.filter((fil) =>
             fil.name.toLowerCase().includes(search) ||
-            fil.about.toLowerCase().includes(search)
+            fil.cost.includes(search)
           ).map((item, index) => {
             return (
               <div>

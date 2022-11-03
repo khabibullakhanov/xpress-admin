@@ -45,7 +45,7 @@ export function AddUserCrud() {
     dispatch(acLoading(true));
     axios(`${api}/product/${id}`, {
       headers: {
-        token: "qev234-23fvg24-vg24tae",
+        token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
       },
     })
       .then((res) => {
@@ -54,7 +54,6 @@ export function AddUserCrud() {
         setImgData(JSON.parse(res.data.img));
         setImages(JSON.parse(res.data.img));
         setTypeHandleSubmit("Edite Product");
-        console.log(imgData);
       })
       .catch((err) => {
         console.log(err);
@@ -68,10 +67,6 @@ export function AddUserCrud() {
 
   function submitUserData(e) {
     e.preventDefault();
-    console.log(newproduct);
-    console.log(newproduct.cost);
-
-
     const formData = new FormData();
     for (let i = 0; images.length > i; i++) {
       formData.append("img", images[i]);
@@ -84,7 +79,7 @@ export function AddUserCrud() {
         method: "POST",
         headers: {
           "Content-Type": "multipart/form-data",
-          token: "qev234-23fvg24-vg24tae",
+          token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
         },
         data: formData,
       })
@@ -119,7 +114,7 @@ export function AddUserCrud() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          token: "qev234-23fvg24-vg24tae",
+          token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
         },
         data: editedData,
       })

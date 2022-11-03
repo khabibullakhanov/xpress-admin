@@ -16,7 +16,7 @@ export function AdvertiseCard() {
     const navigate = useNavigate()
     const products = useSelector((state) => state.products);
     const order = useSelector((state) => state.orders);
-    console.log(products);
+    
 
     const HomeReturns = [
         {

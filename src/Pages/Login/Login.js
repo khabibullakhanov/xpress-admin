@@ -54,21 +54,21 @@ export function Login() {
 
     return (
         <>
-            <img class="wave" src={vawe} alt="" />
-            <div class="container">
-                <div class="img">
+            <img className="wave" src={vawe} alt="" />
+            <div className="container">
+                <div className="img">
                     <img src={bgLogin} alt="" />
                 </div>
-                <div class="login-content">
+                <div className="login-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <img src={avatarLogin} alt="" />
-                        <h2 class="title">Welcome</h2>
-                        <div class="input-div one">
-                            <div class="i">
-                                <i class="fas fa-user"></i>
+                        <h2 className="title">Welcome</h2>
+                        <div className="input-div one">
+                            <div className="i">
+                                <i className="fas fa-user"></i>
                             </div>
-                            <div class="div">
-                                <input type="text" class="input"
+                            <div className="div">
+                                <input type="text" className="input"
                                     placeholder='Username'
                                     {...register("login")}
                                     required
@@ -77,12 +77,12 @@ export function Login() {
                                 />
                             </div>
                         </div>
-                        <div class="input-div pass">
-                            <div class="i">
-                                <i class="fas fa-lock"></i>
+                        <div className="input-div pass">
+                            <div className="i">
+                                <i className="fas fa-lock"></i>
                             </div>
-                            <div class="div">
-                                <input type="password" class="input"
+                            <div className="div">
+                                <input type="password" className="input"
                                     placeholder='Password'
                                     {...register("password")}
                                     required
@@ -98,7 +98,7 @@ export function Login() {
                             </label>
                             <a href="https://support.google.com/mail/#topic=7065107" >forget the password?</a>
                         </div>
-                        <input type="submit" class="btn" value="Login" />
+                        <input type="submit" className="btn" value="Login" />
                     </form>
                 </div>
             </div>

@@ -26,7 +26,7 @@ export function ProductView() {
     dispatch(acLoading(true));
     axios(`${api}/product/${id}`, {
       headers: {
-        token: "qev234-23fvg24-vg24tae",
+        token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
       },
     })
       .then((res) => {
@@ -45,7 +45,7 @@ export function ProductView() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: "qev234-23fvg24-vg24tae",
+        token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
       },
 
     })
