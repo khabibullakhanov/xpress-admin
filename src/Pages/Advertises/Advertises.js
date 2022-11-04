@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from "axios";
-import "./Reports.css"
+import "./Advertises.css"
 import { useDispatch, useSelector } from "react-redux";
 import { acLoading } from "../../Redux/Loading";
 import { acRelodeProduct } from "../../Redux/Products";
@@ -57,7 +57,7 @@ export function Reports() {
                                                 method: "POST",
                                                 headers: {
                                                     "Content-Type": "application/json",
-                                                    token: "sdgergerfd",
+                                                    token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
                                                     id: item.id,
                                                 },
                                             })

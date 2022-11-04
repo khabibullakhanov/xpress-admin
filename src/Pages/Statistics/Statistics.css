@@ -1,0 +1,8 @@
+#chart-main-inside-container > :nth-child(1) {
+    margin: 0 auto;
+}
+
+#chart-main-container {
+    width: 100%;
+    height: auto;
+}

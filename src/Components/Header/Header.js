@@ -5,12 +5,15 @@ import bellIcon from "../../Assets/Icons/bell-Regular.svg"
 import { useDispatch, useSelector } from "react-redux";
 import { acSearch } from "../../Redux/Search"
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Badge from '@mui/material/Badge';
 
 export function Header() {
-
+  const navigate = useNavigate()
   const [search, setSearch] = useState()
   const dispatch = useDispatch();
   const products = useSelector((state) => state.products);
+  const orders = useSelector((state) => state.orders);
 
 
   return (
@@ -26,7 +29,15 @@ export function Header() {
           }} name="search" type="text" />
           <img src={searchIcon} alt="" />
         </form>
-        <img id="header-bell-icon" src={bellIcon} alt="" />
+        <Badge badgeContent={orders.length} color="primary">
+          <img
+            id="header-bell-icon"
+            src={bellIcon}
+            onClick={(e) => {
+              navigate("/order")
+            }}
+            alt="" />
+        </Badge>
       </div>
       <div style={search ? { display: "flex" } : { display: "none" }} id="header-right-bottom">
         {
@@ -43,7 +54,7 @@ export function Header() {
                       setSearch(false)
                       setSearch("")
                     }}
-                    to={`/product/${item.id}`}>{item.name}</Link>
+                    to={`/product/${item.id}`}>{item.name} {item.cost}</Link>
                 </div>
               </div>
             )

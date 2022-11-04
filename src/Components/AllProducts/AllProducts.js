@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AllProducts.css"
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "../../Components/Pagination/Pagination"
 
 export function AllProducts() {
     const navigate = useNavigate()
     const product = useSelector((state) => state.products);
-
 
     return (
         <>
@@ -34,7 +34,6 @@ export function AllProducts() {
                             </div>
                         );
                     })}
-
                 </div>
 
             </div>

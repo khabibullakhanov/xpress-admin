@@ -17,7 +17,7 @@ export function Order() {
   const openModal = useSelector((state) => state.openModal)
   const [orderInside, setOrderInside] = useState([])
   const orders = useSelector((state) => state.orders);
-  const api = process.env.REACT_APP_API;
+  // const api = process.env.REACT_APP_API;
   useEffect(() => {
     window.addEventListener("click", (e) => {
       if (e.target.className === "modal activ") {

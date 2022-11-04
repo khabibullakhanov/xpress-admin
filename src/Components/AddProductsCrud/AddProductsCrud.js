@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./AddUserCard.css";
+import "./AddProductsCrud.css";
 import axios from "axios";
 // import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +10,7 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 
 
-export function AddUserCrud() {
+export function AddProductsCrud() {
 
   const api = process.env.REACT_APP_API;
   const location = useLocation();
@@ -40,7 +40,6 @@ export function AddUserCrud() {
     });
   };
 
-
   useEffect(() => {
     dispatch(acLoading(true));
     axios(`${api}/product/${id}`, {
@@ -51,15 +50,14 @@ export function AddUserCrud() {
       .then((res) => {
         setProduct(res.data);
         dispatch(acLoading(false));
-        setImgData(JSON.parse(res.data.img));
-        setImages(JSON.parse(res.data.img));
         setTypeHandleSubmit("Edite Product");
+        console.log(product);
       })
       .catch((err) => {
         console.log(err);
         dispatch(acLoading(false));
       });
-  }, [dispatch, api, id]);
+  }, [id]);
 
   const newproduct = JSON.stringify(product);
 

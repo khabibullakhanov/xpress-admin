@@ -41,7 +41,7 @@ export function Config() {
       .catch((err) => {
         console.log(err);
       });
-  }, [dispatch, api]);
+  }, [dispatch, api, relodeProduct]);
 
   useEffect(() => {
     axios

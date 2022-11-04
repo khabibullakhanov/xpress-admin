@@ -225,3 +225,14 @@ a {
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+#product-view-add-to-ads {
+  display: flex;
+  margin-top: 5%;
+  align-items: center;
+  gap: 1rem;
+}
+
+#product-view-add-to-ads>input {
+  outline: none;
+}

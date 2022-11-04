@@ -10,7 +10,14 @@ import usersLogo from "../../Assets/Icons/users-Light.svg"
 import reportsLogo from "../../Assets/Icons/user-Light.svg"
 import profileImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg"
 import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
-
+import CategoryIcon from '@mui/icons-material/Category';
+import InfoIcon from '@mui/icons-material/Info';
+import LeaderboardIcon from '@mui/icons-material/Leaderboard';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import AutoModeIcon from '@mui/icons-material/AutoMode';
+import AddBoxIcon from '@mui/icons-material/AddBox';
+import ViewListIcon from '@mui/icons-material/ViewList';
 export function Appbar({ openMenu, }) {
 
   const logOut = () => {
@@ -41,7 +48,7 @@ export function Appbar({ openMenu, }) {
             return (
               // <div key={index}>
               <NavLink activeclassname="active-nav" key={index} to={item.link} id="links_container-nav-link">
-                <img src={item.icon} alt="" />
+                <p>{item.icon}</p>
                 <span style={openMenu ? { display: "block" } : {}}>{item.name}</span>
               </NavLink>
               // </div>
@@ -69,43 +76,43 @@ const navbarData = [
   {
     id: 1,
     link: "/product",
-    name: "Product",
-    icon: product,
+    name: "Products",
+    icon: <CategoryIcon />,
   },
   {
     id: 2,
-    link: "/ads",
-    name: "Advertisment",
-    icon: ads,
+    link: "/informations",
+    name: "Information",
+    icon: <InfoIcon />,
   },
   {
     id: 3,
-    link: "/brands",
-    name: "Brands",
-    icon: brands,
+    link: "/statistics",
+    name: "Statistics",
+    icon: <LeaderboardIcon />,
   },
   {
     id: 4,
     link: "/order",
     name: "Order",
-    icon: order,
+    icon: <ViewModuleIcon />,
   },
   {
     id: 5,
-    link: "/users",
-    name: "Users",
-    icon: usersLogo,
+    link: "/productAbout",
+    name: "Product About",
+    icon: <ViewListIcon />,
   },
   {
     id: 6,
-    link: "/reports",
-    name: "Reports",
-    icon: reportsLogo,
+    link: "/ads",
+    name: "Advertises",
+    icon: <AutoModeIcon />,
   },
   {
     id: 7,
-    link: "/addUser",
-    name: "Add User",
-    icon: addIcon,
+    link: "/addProduct",
+    name: "Add Product",
+    icon: <AddBoxIcon />,
   },
 ];

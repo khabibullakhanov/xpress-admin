@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Appbar } from "./Components/Appbar/Appbar";
 import { Header } from "./Components/Header/Header";
-import { AddUser } from "./Pages/AddUser/AddUser";
-import { Advertisment } from "./Pages/Advertisment/Advertisment";
-import { Brands } from "./Pages/Brands/Brands";
+import { AddProduct } from "./Pages/AddProduct/AddProduct";
+import { Advertisment } from "./Pages/Information/Information";
+import { Brands } from "./Pages/Statistics/Statistics";
 import { Order } from "./Pages/Order/Order";
 import { Product } from "./Pages/Product/Product";
-import { Reports } from "./Pages/Reports/Reports";
-import { Users } from "./Pages/Users/Users";
+import { Reports } from "./Pages/Advertises/Advertises";
+import { Users } from "./Pages/ProductList/ProductList";
 import { NotFounded } from "./Pages/NotFounded/NotFounded";
 import { ProductView } from "./Components/ProductView/ProductView";
 import { useSelector } from "react-redux";
@@ -38,17 +38,17 @@ export function Router() {
         </div>
         <div id="router_pages">
           <Header />
-          <Routes>
+          <Routes >
             <Route path="/product" element={<Product />} />
-            <Route path="/ads" element={<Advertisment />} />
-            <Route path="/brands" element={<Brands />} />
+            <Route path="/informations" element={<Advertisment />} />
+            <Route path="/statistics" element={<Brands />} />
             <Route path="/order" element={<Order />} />
-            <Route path="/users" element={<Users />} />
-            <Route path="/reports" element={<Reports />} />
-            <Route path="/addUser" element={<AddUser />} />
+            <Route path="/productAbout" element={<Users />} />
+            <Route path="/ads" element={<Reports />} />
+            <Route path="/addProduct" element={<AddProduct />} />
             <Route path="*" element={<NotFounded />} />
             <Route path="/product/:id" element={<ProductView products={products} />} />
-            <Route path="/product/edite/:id" element={<AddUser />} />
+            <Route path="/product/edite/:id" element={<AddProduct />} />
           </Routes>
         </div>
       </div>
