@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Login.css"
 import { useForm } from 'react-hook-form';
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 import { useDispatch } from 'react-redux';
 import { acLoading } from '../../Redux/Loading';
 import { acAdmin } from "../../Redux/Admin"
@@ -9,10 +9,11 @@ import axios from 'axios';
 import vawe from "../../Assets/Images/wave.png"
 import bgLogin from "../../Assets/Images/bg.svg"
 import avatarLogin from "../../Assets/Images/avatar.svg"
+import { toast } from "react-toastify";
 
 export function Login() {
     const dispatch = useDispatch();
-    const { enqueueSnackbar } = useSnackbar();
+    // const { enqueueSnackbar } = useSnackbar();
     const { register, handleSubmit, reset } = useForm();
 
 
@@ -37,15 +38,17 @@ export function Login() {
                     sessionStorage.setItem("admin", JSON.stringify(res.data))
                     dispatch(acAdmin(res.data));
                 }
-                enqueueSnackbar(res.response.data.message, {
-                    variant: "success",
-                });
+                // enqueueSnackbar(res.response.data.message, {
+                //     variant: "success",
+                // });
+                toast.success(res.response.data.message);
             })
             .catch((err) => {
                 console.log(err);
-                enqueueSnackbar(err.response.data.message, {
-                    variant: "error",
-                });
+                // enqueueSnackbar(err.response.data.message, {
+                //     variant: "error",
+                // });
+                toast.error(err.response.data.message);
                 dispatch(acLoading(false));
             });
         reset()

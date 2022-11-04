@@ -6,12 +6,13 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import { acOpenModal } from "../../Redux/OpenModal"
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 import IconButton from '@mui/material/IconButton';
 import { acLoading } from "../../Redux/Loading";
+import { toast } from "react-toastify";
 
 export function Order() {
-  const enqueueSnackbar = useSnackbar()
+  // const enqueueSnackbar = useSnackbar()
   const dispatch = useDispatch()
   const openModal = useSelector((state) => state.openModal)
   const [orderInside, setOrderInside] = useState([])
@@ -42,7 +43,8 @@ export function Order() {
     .then((res) => {
       window.location.reload()
       dispatch(acLoading(false))
-        enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+        // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+        toast.success("Products successfully deleted");
         console.log(res.data);
       })
       .catch((err) => {

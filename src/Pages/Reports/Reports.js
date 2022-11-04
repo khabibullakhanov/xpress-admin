@@ -4,6 +4,8 @@ import "./Reports.css"
 import { useDispatch, useSelector } from "react-redux";
 import { acLoading } from "../../Redux/Loading";
 import { acRelodeProduct } from "../../Redux/Products";
+import { toast } from "react-toastify";
+
 
 export function Reports() {
     const dispatch = useDispatch();
@@ -35,7 +37,7 @@ export function Reports() {
                             <tr key={index}>
                                 <td>{(a += 1)}</td>
                                 <td>
-                                        <img src={JSON.parse(item.img)[0]} alt="" />
+                                    <img src={JSON.parse(item.img)[0]} alt="" />
                                 </td>
                                 <td>{item.name}</td>
                                 <td>{item.price}</td>
@@ -60,9 +62,10 @@ export function Reports() {
                                                 },
                                             })
                                                 .then((res) => {
-                                                    console.log(res.data);
+                                                    // console.log(res.data);
                                                     dispatch(acRelodeProduct());
                                                     dispatch(acLoading(false));
+                                                    toast.success(res ? "Ads added" : "Ads deleted");
                                                 })
                                                 .catch((err) => {
                                                     console.log(err);
@@ -77,6 +80,7 @@ export function Reports() {
                     })}
                 </tbody>
             </table>
+           
         </div>
     )
 }

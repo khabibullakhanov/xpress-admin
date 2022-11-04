@@ -8,11 +8,12 @@ import { IconButton } from '@mui/material';
 import axios from "axios";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
+import { toast } from "react-toastify";
 import { acRelodeProduct } from "../../Redux/Products.js"
 
 export function ProductView() {
-  const enqueueSnackbar = useSnackbar()
+  // const enqueueSnackbar = useSnackbar()
   const [data, setData] = useState([]);
   const [images, setImages] = useState([]);
   const [view, setView] = useState(0);
@@ -51,10 +52,12 @@ export function ProductView() {
     })
       .then((res) => {
         console.log(res.data);
-        enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+        // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
+        toast.success("Product succesfully deleted");
       })
       .catch((err) => {
-        enqueueSnackbar("Product can't deleted", { variant: "error" });
+        // enqueueSnackbar("Product can't deleted", { variant: "error" });
+        toast.error("Product can't deleted");
         console.log(err);
       });
     navigate("/product")

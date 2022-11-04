@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./AddUserCard.css";
 import axios from "axios";
-import { useSnackbar } from "notistack";
+// import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { acLoading } from "../../Redux/Loading"
 import { NumericFormat } from "react-number-format";
 import { useLocation } from "react-router-dom";
-
+import { toast } from "react-toastify";
 
 
 export function AddUserCrud() {
@@ -15,7 +15,7 @@ export function AddUserCrud() {
   const api = process.env.REACT_APP_API;
   const location = useLocation();
   const id = location.pathname.split("/").pop();
-  const { enqueueSnackbar } = useSnackbar();
+  // const { enqueueSnackbar } = useSnackbar();
   const [typeHandleSubmit, setTypeHandleSubmit] = useState("Add Product")
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -85,14 +85,16 @@ export function AddUserCrud() {
       })
         .then((res) => {
           console.log(res.data);
-          enqueueSnackbar("Product succesfully added", { variant: "success" });
+          // enqueueSnackbar("Product succesfully added", { variant: "success" });
+          toast.success("Product succesfully added");
           navigate("/product")
           dispatch(acLoading(false));
         })
         .catch((err) => {
           navigate("/product")
           dispatch(acLoading(false));
-          enqueueSnackbar("Product not added", { variant: "error" });
+          toast.error("Product can't added");
+          // enqueueSnackbar("Product not added", { variant: "error" });
           console.log(err.response.data.message);
         });
     } else if (typeHandleSubmit === "Edite Product") {
@@ -122,12 +124,14 @@ export function AddUserCrud() {
           console.log(res.data);
           navigate("/product")
           window.location.reload()
-          enqueueSnackbar("Product succesfully edited", { variant: "success" });
+          // enqueueSnackbar("Product succesfully edited", { variant: "success" });
+          toast.success("Product succesfully edited");
         })
         .catch(function (err) {
           console.log(err);
           navigate("/product")
-          enqueueSnackbar("Product can't edited", { variant: "error" });
+          // enqueueSnackbar("Product can't edited", { variant: "error" });
+          toast.error("Product can't edited");
         });
     }
 
