@@ -15,7 +15,6 @@ import { acRelodeProduct } from "../../Redux/Products.js"
 export function ProductView() {
   // const enqueueSnackbar = useSnackbar()
   const [data, setData] = useState([]);
-  const [checked, setChecked] = useState()
   const [images, setImages] = useState([]);
   const [view, setView] = useState(0);
   const dispatch = useDispatch()
@@ -69,6 +68,28 @@ export function ProductView() {
     navigate(`/product/edite/${id}`)
   }
 
+  const adsCheck = (id) => {
+    dispatch(acLoading(true));
+    axios(`${api}/ads/open`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
+        id: id,
+      },
+    })
+      .then((res) => {
+        console.log(res.data);
+        dispatch(acRelodeProduct());
+        dispatch(acLoading(false));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(acRelodeProduct());
+        dispatch(acLoading(false));
+      });
+  }
+
   const AllData = [data];
   return (
     <>
@@ -118,36 +139,6 @@ export function ProductView() {
                     <h3>Discaunt: <p>{item.discaunt === "0" ? (item.price / 100) * 10 + +item.price : Math.round(item.price - (((item.price / 100) * 10 + +item.price) / 100) * item.discaunt)}$</p></h3>
                     <h3>For Whom: <p>{item.forWhom}</p></h3>
                   </div>
-                  <div id="product-view-add-to-ads">
-                    <h3>Add to Ads:</h3>
-                    <input
-                      type="checkbox"
-                      checked={item.ads ? true : false}
-                      onClick={() => {
-                        console.log(item.ads);
-                        dispatch(acLoading(true));
-                        axios(`${api}/ads/open`, {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                            token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
-                            id: item.id,
-                          },
-                        })
-                          .then((res) => {
-                            console.log(item.id);
-                            console.log(res.data);
-                            dispatch(acRelodeProduct());
-                            dispatch(acLoading(false));
-                          })
-                          .catch((err) => {
-                            console.log(err);
-                            dispatch(acRelodeProduct());
-                            dispatch(acLoading(false));
-                          });
-                      }}
-                    />
-                  </div>
                   <div id="botttom-item-edite-content">
                     <IconButton
                       onClick={() => {
@@ -163,6 +154,16 @@ export function ProductView() {
                     >
                       <EditIcon />
                     </IconButton>
+                  </div>
+                  <div id="product-view-add-to-ads">
+                    <h3>Add to Ads:</h3>
+                    <input
+                      type="checkbox"
+                      checked={item.ads ? true : false}
+                      onClick={() => {
+                        adsCheck(item.id)
+                      }}
+                    />
                   </div>
                 </div>
               )

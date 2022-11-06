@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import "./AllProducts.css"
+import axios from "axios";
+import { acRelodeProduct } from "../../Redux/Products";
+import { acLoading } from "../../Redux/Loading";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { acSort, acSortedProduct } from "../../Redux/Sort";
@@ -8,10 +11,10 @@ import ClearIcon from '@mui/icons-material/Clear';
 
 export function AllProducts() {
     const navigate = useNavigate()
-    // const api = process.env.REACT_APP_API;
+    const api = process.env.REACT_APP_API;
     const dispatch = useDispatch()
     const product = useSelector((state) => state.products);
-    const sortedpr = useSelector((state) => state.sortedpr);
+    const sortedpr = useSelector((state) => state.sortedProduct);
     // const enoughProduct = product.filter((item) => item.quantity <= 5).length
     const sort = useSelector((state) => state.sort);
     useEffect(() => {
@@ -69,12 +72,12 @@ export function AllProducts() {
                             <div key={item.id}>
                                 <div
                                     style={item.img === [] ? { diplay: "none" } : {}}
-                                    id="product-content-item"
-                                    onClick={() => {
-                                        navigate(`/product/${item.id}`);
-                                    }}
-                                >
-                                    <figure>
+                                    id="product-content-item">
+                                    <figure
+                                        onClick={() => {
+                                            navigate(`/product/${item.id}`);
+                                        }}
+                                    >
                                         <img src={imagess} alt="" />
                                     </figure>
                                     <div id="product-content-item-bottom">
@@ -89,6 +92,36 @@ export function AllProducts() {
                                             <p>
                                                 {item.quantity <= 5 ? <ClearIcon style={{ color: "red", fontWeight: "800" }} /> : <CheckIcon style={{ color: "green", fontWeight: "800" }} />}
                                             </p>
+                                        </div>
+                                        <div>
+                                            <p>Ads :</p>
+                                            <input
+                                                type="checkbox"
+                                                checked={item.ads ? true : false}
+                                                onClick={() => {
+                                                    console.log(item.ads);
+                                                    dispatch(acLoading(true));
+                                                    axios(`${api}/ads/open`, {
+                                                        method: "POST",
+                                                        headers: {
+                                                            "Content-Type": "application/json",
+                                                            token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
+                                                            id: item.id,
+                                                        },
+                                                    })
+                                                        .then((res) => {
+                                                            console.log(item.id);
+                                                            console.log(res.data);
+                                                            dispatch(acRelodeProduct());
+                                                            dispatch(acLoading(false));
+                                                        })
+                                                        .catch((err) => {
+                                                            console.log(err);
+                                                            dispatch(acRelodeProduct());
+                                                            dispatch(acLoading(false));
+                                                        });
+                                                }}
+                                            />
                                         </div>
                                     </div>
                                 </div>

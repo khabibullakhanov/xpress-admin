@@ -15,7 +15,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 25%;
+    width: 350px;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -54,7 +54,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 25%;
+    width: 350px;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -94,7 +94,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 25%;
+    width: 350px;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -133,7 +133,7 @@
     align-items: center;
     height: 180px;
     border-radius: 10px;
-    width: 25%;
+    width: 350px;
     padding: 0 30px;
     justify-content: space-between;
     transition: 0.4s ease-in-out;
@@ -171,52 +171,13 @@
 @media only screen and (max-width: 900px) {
     #advertise-container {
         display: flex;
-        /* justify-content: center;
-        flex-wrap: wrap; */
         align-items: center;
         justify-content: center;
-        flex-direction: column;
-        max-height: 700px;
-        padding-top: 25%;
-        min-width: 25%;
-        overflow: auto;
-    }
-
-    #advertise-container-left div {
-        width: 170%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 52%;
-    }
-
-    #advertise-container-right div {
-        width: 170%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 52%;
+        width: 95%;
     }
 
 }
 
-@media only screen and (max-width: 400px) {
-    #advertise-container-right div {
-        width: 170%;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        flex-direction: column;
-        height: 180px;
-    }
+@media only screen and (max-width: 500px) {
 
-    #advertise-container-left div {
-        width: 100%;
-        padding-block: -100px;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        flex-direction: column;
-        height: 250px;
-    }
 }

@@ -9,5 +9,6 @@ export function Product() {
       <AllProducts />
     </div>
   )
+  
 
 }

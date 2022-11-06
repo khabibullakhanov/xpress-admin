@@ -1,20 +1,12 @@
 import React from "react";
 import "./Appbar.css";
 import { NavLink } from "react-router-dom";
-import order from "../../Assets/Icons/shopping-basket-Light.svg";
-import product from "../../Assets/Icons/package-Light.svg";
-import ads from "../../Assets/Icons/ads (2).svg";
-import brands from "../../Assets/Icons/star-Light.svg";
 import signout from "../../Assets/Icons/log-out-Light.svg";
-import usersLogo from "../../Assets/Icons/users-Light.svg"
-import reportsLogo from "../../Assets/Icons/user-Light.svg"
 import profileImg from "../../Assets/Images/photo_2022-06-16_20-17-34.jpg"
-import addIcon from "../../Assets/Icons/plus-square-Regular.svg"
 import CategoryIcon from '@mui/icons-material/Category';
 import InfoIcon from '@mui/icons-material/Info';
 import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import AutoModeIcon from '@mui/icons-material/AutoMode';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import ViewListIcon from '@mui/icons-material/ViewList';

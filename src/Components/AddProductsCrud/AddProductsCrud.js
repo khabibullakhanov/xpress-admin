@@ -48,16 +48,15 @@ export function AddProductsCrud() {
       },
     })
       .then((res) => {
-        setProduct(res.data);
         dispatch(acLoading(false));
+        setProduct(res.data);
         setTypeHandleSubmit("Edite Product");
-        console.log(product);
       })
       .catch((err) => {
         console.log(err);
         dispatch(acLoading(false));
       });
-  }, [id]);
+  }, [id, api, dispatch]);
 
   const newproduct = JSON.stringify(product);
 

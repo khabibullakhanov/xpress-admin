@@ -59,6 +59,7 @@ export function AdvertiseCard() {
                 const path = item.path
                 return (
                     <div
+                    className='ads-content'
                         key={index}
                         onClick={() => {
                             navigate(path)

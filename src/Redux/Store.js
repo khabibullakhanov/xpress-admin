@@ -8,6 +8,7 @@ import { reOpenModal } from "./OpenModal"
 import { reAds } from "./Ads";
 import { reRelodeProduct } from "./Products";
 import { reSort, reSortedProduct } from "./Sort";
+import { reSearch } from "./Search";
 
 const reducer = combineReducers({
   crud: reCrud,
@@ -19,7 +20,8 @@ const reducer = combineReducers({
   ads: reAds,
   relodeProduct: reRelodeProduct,
   sort: reSort,
-  sortedpr: reSortedProduct,
+  search: reSearch,
+  sortedProduct: reSortedProduct,
 });
 
 export const Store = configureStore({

@@ -10,22 +10,21 @@ import Badge from '@mui/material/Badge';
 
 export function Header() {
   const navigate = useNavigate()
-  const [search, setSearch] = useState()
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.products);
+  const [search, setSearch] = useState(false);
+  const products = useSelector((state) => state.sortedProduct);
   const orders = useSelector((state) => state.orders);
-
+  const searched = useSelector((state) => state.search);
 
   return (
     <div id="header">
       <div id="header_right">
         <form onSubmit={(e) => {
-          dispatch(acSearch(e.target.search.value))
           e.preventDefault()
         }} id="header-right-form">
-          <input placeholder="Search..." value={search} onChange={(e) => {
+          <input placeholder="Search..." onChange={(e) => {
+            dispatch(acSearch(e.target.value.toLowerCase()))
             setSearch(e.target.value);
-            dispatch(acSearch(e.target.value))
           }} name="search" type="text" />
           <img src={searchIcon} alt="" />
         </form>
@@ -39,26 +38,17 @@ export function Header() {
             alt="" />
         </Badge>
       </div>
-      <div style={search ? { display: "flex" } : { display: "none" }} id="header-right-bottom">
-        {
-          search ? products.filter((fil) =>
-            fil.name.toLowerCase().includes(search) ||
-            fil.cost.includes(search)
-          ).map((item, index) => {
-            return (
-              <div>
-                <div id="header-right-bottom-item">
-                  <p>{index + 1}</p>
-                  <Link
-                    onClick={() => {
-                      setSearch(false)
-                      setSearch("")
-                    }}
-                    to={`/product/${item.id}`}>{item.name} {item.cost}</Link>
-                </div>
+      <div style={search ? { display: "flex", width: "auto" } : { display: "none" }} id="header-right-bottom">
+        {search ? products.filter((itemn) => itemn.name.toLowerCase().includes(searched)).map((item, index) => {
+          return (
+            <div key={index}>
+              <div id="header-right-bottom-item">
+                <p>{index + 1}</p>
+                <Link to={`/product/${item.id}`}>{item.name} {item.cost}</Link>
               </div>
-            )
-          }) : ""
+            </div>
+          )
+        }) : ""
         }
       </div>
     </div>

@@ -5,8 +5,8 @@ import { AddProductsCrud } from '../../Components/AddProductsCrud/AddProductsCru
 export function AddProduct() {
     return (
         <div id="add-users">
-            <h1>Add User</h1>
-            <AddProductsCrud/>
+            <h1>Add Product</h1>
+            <AddProductsCrud />
         </div>
     )
 }
