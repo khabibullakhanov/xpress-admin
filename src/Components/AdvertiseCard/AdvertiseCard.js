@@ -41,7 +41,7 @@ export function AdvertiseCard() {
             name: "Enough Products:",
             show: products.filter((item) => item.caunt < 5).length,
             icon: <CategoryIcon style={{ color: "grey" }} />,
-            path: "/ads"
+            path: "/enough-product"
         },
         {
             id: 3,

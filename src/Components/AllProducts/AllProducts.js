@@ -12,7 +12,7 @@ export function AllProducts() {
     const dispatch = useDispatch()
     const product = useSelector((state) => state.products);
     const sortedpr = useSelector((state) => state.sortedpr);
-    const enoughProduct = product.filter((item) => item.quantity <= 5).length
+    // const enoughProduct = product.filter((item) => item.quantity <= 5).length
     const sort = useSelector((state) => state.sort);
     useEffect(() => {
         if (sort === "all") {

@@ -13,6 +13,7 @@ import { NotFounded } from "./Pages/NotFounded/NotFounded";
 import { ProductView } from "./Components/ProductView/ProductView";
 import { useSelector } from "react-redux";
 import { Config } from "./Config/Config"
+import { EnoughProduct } from "./Pages/EnoughProduct/EnoughProduct";
 
 export function Router() {
   const [openAppbar, setOpenAppbar] = useState(false)
@@ -43,12 +44,14 @@ export function Router() {
             <Route path="/informations" element={<Advertisment />} />
             <Route path="/statistics" element={<Brands />} />
             <Route path="/order" element={<Order />} />
+            <Route path="/enough-product" element={<EnoughProduct />} />
             <Route path="/productAbout" element={<Users />} />
             <Route path="/ads" element={<Reports />} />
             <Route path="/addProduct" element={<AddProduct />} />
             <Route path="*" element={<NotFounded />} />
             <Route path="/product/:id" element={<ProductView products={products} />} />
             <Route path="/product/edite/:id" element={<AddProduct />} />
+
           </Routes>
         </div>
       </div>
