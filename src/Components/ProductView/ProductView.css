@@ -85,7 +85,7 @@ a {
 }
 #Right {
   width: 50%;
-  height: 60%;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -94,6 +94,7 @@ a {
   padding-left: 5%;
   margin-top: -7.8%;
   padding-bottom: 2%;
+  border-radius: 4px;
 }
 
 #Right h3 {

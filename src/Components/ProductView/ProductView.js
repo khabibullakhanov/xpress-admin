@@ -15,6 +15,7 @@ import { acRelodeProduct } from "../../Redux/Products.js"
 export function ProductView() {
   // const enqueueSnackbar = useSnackbar()
   const [data, setData] = useState([]);
+  const [checked, setChecked] = useState()
   const [images, setImages] = useState([]);
   const [view, setView] = useState(0);
   const dispatch = useDispatch()
@@ -123,6 +124,7 @@ export function ProductView() {
                       type="checkbox"
                       checked={item.ads ? true : false}
                       onClick={() => {
+                        console.log(item.ads);
                         dispatch(acLoading(true));
                         axios(`${api}/ads/open`, {
                           method: "POST",
@@ -133,6 +135,7 @@ export function ProductView() {
                           },
                         })
                           .then((res) => {
+                            console.log(item.id);
                             console.log(res.data);
                             dispatch(acRelodeProduct());
                             dispatch(acLoading(false));

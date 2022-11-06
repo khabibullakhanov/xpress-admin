@@ -10,6 +10,7 @@ import axios from "axios";
 import IconButton from '@mui/material/IconButton';
 import { acLoading } from "../../Redux/Loading";
 import { toast } from "react-toastify";
+import { acRelodeProduct } from "../../Redux/Products";
 
 export function Order() {
   // const enqueueSnackbar = useSnackbar()
@@ -32,22 +33,24 @@ export function Order() {
   };
 
   function deleteOrder(orderId) {
+    console.log(orderId);
     dispatch(acLoading(true))
     axios(`https://xpress.pandashop.uz/api/order/delete/${orderId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        token: "token",
+        token: "f0de0e66-e6b6-5bed-9a9f-73459b6adbe7",
       },
     })
-    .then((res) => {
-      window.location.reload()
-      dispatch(acLoading(false))
+      .then((res) => {
+        dispatch(acLoading(false))
+        dispatch(acRelodeProduct())
         // enqueueSnackbar("Product succesfully deleted", { variant: "success" });
-        toast.success("Products successfully deleted");
+        toast.success("Order successfully deleted");
         console.log(res.data);
       })
       .catch((err) => {
+        toast.error("Order can't deleted");
         console.log(err);
       });
   }
