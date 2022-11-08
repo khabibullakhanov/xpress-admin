@@ -57,8 +57,8 @@ export function Order() {
 
 
   return (
-    <div id="orders-main-container">
-      <table className="styled-table">
+    <div id="all-table-container">
+      <table>
         <thead>
           <tr>
             <th>№</th>

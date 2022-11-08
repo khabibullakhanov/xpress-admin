@@ -13,8 +13,8 @@ export function Reports() {
     const ads = useSelector((state) => state.ads);
     let a = 0;
     return (
-        <div id="orders-main-container">
-            <table className="styled-table">
+        <div id='all-table-container'>
+            <table>
                 <thead>
                     <tr>
                         <th>№</th>
@@ -45,7 +45,7 @@ export function Reports() {
                                 <td>{item.size}</td>
                                 <td>{item.discaunt}</td>
                                 <td>{item.forWhom}</td>
-                                <td>{item.about}</td>
+                                <td>{item.about.slice(0,15)}</td>
 
                                 <td>
                                     <input

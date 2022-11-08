@@ -172,6 +172,18 @@ aside {
   padding: 11px;
 }
 
+#mylogo-img {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#mylogo-img > img {
+  width: 100%;
+}
+
 #links_container>a.active {
   color: gray;
   background: #C7C7C7;

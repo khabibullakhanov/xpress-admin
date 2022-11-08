@@ -9,6 +9,7 @@ import { reAds } from "./Ads";
 import { reRelodeProduct } from "./Products";
 import { reSort, reSortedProduct } from "./Sort";
 import { reSearch } from "./Search";
+import { reOpenMenu } from "./OpenMenu";
 
 const reducer = combineReducers({
   crud: reCrud,
@@ -21,6 +22,7 @@ const reducer = combineReducers({
   relodeProduct: reRelodeProduct,
   sort: reSort,
   search: reSearch,
+  openAppBar: reOpenMenu,
   sortedProduct: reSortedProduct,
 });
 

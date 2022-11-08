@@ -1,104 +1,77 @@
-import React from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import React, { useEffect, useState } from "react";
+import "./Chart.css";
+import axios from "axios";
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+} from "chart.js";
+import { Bar } from "react-chartjs-2";
 
-const data = [
-    {
-        name: 'January',
-        uv: 4000,
-        pv: 1400,
-        amt: 2400,
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
+
+export const options = {
+    responsive: true,
+    plugins: {
+        legend: {
+            position: "top",
+        },
+        title: {
+            display: true,
+            text: "Number of Visitors for the last 30 days",
+        },
     },
-    {
-        name: 'February',
-        uv: 7000,
-        pv: 2898,
-        amt: 2210,
-    },
-    {
-        name: 'March',
-        uv: 4600,
-        pv: 2098,
-        amt: 2210,
-    },
-    {
-        name: 'April',
-        uv: 8490,
-        pv: 800,
-        amt: 2100,
-    },
-    {
-        name: 'May',
-        uv: 9000,
-        pv: 4098,
-        amt: 2210,
-    },
-    {
-        name: 'June',
-        uv: 3500,
-        pv: 1998,
-        amt: 2210,
-    },
-    {
-        name: 'July',
-        uv: 2000,
-        pv: 9800,
-        amt: 2290,
-    },
-    {
-        name: 'August',
-        uv: 8780,
-        pv: 5908,
-        amt: 2000,
-    },
-    {
-        name: 'September',
-        uv: 1890,
-        pv: 4800,
-        amt: 2181,
-    },
-    {
-        name: 'Oktober',
-        uv: 5090,
-        pv: 1000,
-        amt: 2500,
-    },
-    {
-        name: 'November',
-        uv: 7490,
-        pv: 2693,
-        amt: 2100,
-    },
-    {
-        name: 'December',
-        uv: 3490,
-        pv: 4300,
-        amt: 2100,
-    },
-];
+};
 
 export function Chartt() {
+    const api = process.env.REACT_APP_API;
+    const [guests, setGuests] = useState([]);
+    useEffect(() => {
+        axios(`${api}/guest/view`)
+            .then((res) => {
+                setGuests(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [api]);
+
+    const labels = [];
+    const amaunt = [];
+
+    const data = {
+        labels: labels,
+        datasets: [
+            {
+                label: "Number of guests",
+                backgroundColor: "#c7c7c7",
+                border: "none",
+                data: amaunt,
+                borderRadius: 5,
+            },
+        ],
+    };
+
+    guests.map((item) => {
+        labels.push(item.date);
+        amaunt.push(item.quantity);
+        return null;
+    });
 
     return (
-        <ResponsiveContainer width="100%" aspect={3}>
-            <BarChart
-                width={500}
-                height={600}
-                data={data}
-                margin={{
-                    top: 5,
-                    right: 10,
-                    left: 20,
-                    bottom: 5,
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="pv" fill="#1976D2" />
-                <Bar dataKey="uv" fill="#C7C7C7" />
-            </BarChart>
-        </ResponsiveContainer>
-    );
+        <div id="reportGuests">
+            <Bar options={options} data={data} />
+        </div>
+    )
 }

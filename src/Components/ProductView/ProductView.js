@@ -96,7 +96,7 @@ export function ProductView() {
       <div id="ProductView">
         <div id="viewfull">
           <div id="Left">
-            <figure>
+            <figure id="left-figure">
               <img
                 id="transition-image" src={images[view]} alt="" />
             </figure>
@@ -127,7 +127,7 @@ export function ProductView() {
             <h2 id="about-product-header-content">About Product</h2>
             {AllData.map((item, indeks) => {
               return (
-                <div key={indeks}>
+                <div key={indeks} id="pv-inside">
                   <div id="product-view-div-content">
                     <h3>Name: <p>{item.name}</p></h3>
                     <h3>About: <p>{item.about}</p></h3>

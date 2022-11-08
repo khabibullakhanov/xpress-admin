@@ -8,7 +8,6 @@ export function Brands() {
       <div id='chart-main-inside-container'>
         <Chartt />
       </div>
-      sfsa
     </div>
   )
 }
