@@ -131,6 +131,21 @@
     }
 }
 
+
+@media only screen and (max-width: 1225px) {
+    #all-products-content-inside {
+        max-height: 350px;
+        overflow-y: auto;
+    }
+}
+
+@media only screen and (max-width: 1325px) {
+    #all-products-content-inside {
+        max-height: 455px;
+        overflow-y: auto;
+    }
+}
+
 @media only screen and (max-width: 1125px) {
     #all-products-content-inside > * {
         display: flex;

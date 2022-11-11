@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Header.css";
 import searchIcon from "../../Assets/Icons/search-Regular.svg"
 import bellIcon from "../../Assets/Icons/bell-Regular.svg"
@@ -15,6 +15,14 @@ export function Header() {
   const products = useSelector((state) => state.sortedProduct);
   const orders = useSelector((state) => state.orders);
   const searched = useSelector((state) => state.search);
+
+  useEffect(() => {
+    window.addEventListener("click", () => {
+      if (search = true) {
+        setSearch(false)
+      }
+    });
+  });
 
   return (
     <div id="header">
@@ -39,16 +47,21 @@ export function Header() {
         </Badge>
       </div>
       <div style={search ? { display: "flex", width: "auto" } : { display: "none" }} id="header-right-bottom">
-        {search ? products.filter((itemn) => itemn.name.toLowerCase().includes(searched)).map((item, index) => {
-          return (
-            <div key={index}>
-              <div id="header-right-bottom-item">
-                <p>{index + 1}</p>
-                <Link to={`/product/${item.id}`}>{item.name} {item.cost}</Link>
+        {search ? products.filter((itemn) => itemn.name.includes(searched))
+          .map((item, index) => {
+            return (
+              <div key={index}>
+                <div id="header-right-bottom-item">
+                  <p>{index + 1}</p>
+                  <Link
+                    onClick={() => {
+                      setSearch(false);
+                    }}
+                    to={`/product/${item.id}`}>{item.name} {item.cost}</Link>
+                </div>
               </div>
-            </div>
-          )
-        }) : ""
+            )
+          }) : ""
         }
       </div>
     </div>

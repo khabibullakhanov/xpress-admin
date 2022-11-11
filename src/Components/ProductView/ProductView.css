@@ -90,6 +90,7 @@ a {
   height: 100%;
   background: #8b8b8bbb;
   z-index: 560999;
+  border-radius: 8px;
 }
 
 #Right {
@@ -99,7 +100,6 @@ a {
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  background-color: #e0e0e0;
   padding-left: 5%;
   margin-top: -7.8%;
   padding-bottom: 2%;
