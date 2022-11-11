@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import searchIcon from "../../Assets/Icons/search-Regular.svg"
 import bellIcon from "../../Assets/Icons/bell-Regular.svg"
@@ -15,14 +15,6 @@ export function Header() {
   const products = useSelector((state) => state.sortedProduct);
   const orders = useSelector((state) => state.orders);
   const searched = useSelector((state) => state.search);
-
-  useEffect(() => {
-    window.addEventListener("click", () => {
-      if (search = true) {
-        setSearch(false)
-      }
-    });
-  });
 
   return (
     <div id="header">

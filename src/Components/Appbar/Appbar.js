@@ -9,7 +9,6 @@ import LeaderboardIcon from '@mui/icons-material/Leaderboard';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import AutoModeIcon from '@mui/icons-material/AutoMode';
 import AddBoxIcon from '@mui/icons-material/AddBox';
-import ViewListIcon from '@mui/icons-material/ViewList';
 import { useSelector } from "react-redux";
 export function Appbar() {
 
