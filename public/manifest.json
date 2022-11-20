@@ -1,6 +1,6 @@
 {
-    "short_name": "khabibullakhanov",
-    "name": "khabibullakhanov",
+    "short_name": "xpress-admin",
+    "name": "xpress-admin",
     "scope": "/",
       "start_url": "/",
     "display": "standalone",
